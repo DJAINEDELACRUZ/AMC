@@ -1,0 +1,2741 @@
+
+<!doctype html>
+<html class="no-js" lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GOB.mx - Guía de estilo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="https://framework-gb.cdn.gob.mx/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/qa/assets/styles/main.css">
+     <link rel="stylesheet" type="text/css" href="https://framework-gb.cdn.gob.mx/grafica-ejemplo.css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js"></script>
+    <![endif]-->
+
+  
+                              <script>!function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("True"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="N3JQ2-2RVHB-WJQMN-CEYEM-ATMWX",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"N3JQ2-2RVHB-WJQMN-CEYEM-ATMWX",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write("<bo"+'dy onload="document._l();">'),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="xw72etyxfmzs2z3ytgha-f-dedf87bef-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"39","ak.cp":"413578","ak.ai":parseInt("270161",10),"ak.ol":"0","ak.cr":63,"ak.ipv":4,"ak.proto":"h2","ak.rid":"aabc37e3","ak.r":47665,"ak.a2":e,"ak.m":"b","ak.n":"essl","ak.bpcip":"189.191.162.0","ak.cport":65077,"ak.gh":"23.213.247.173","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"","ak.t":"1735956878","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==DqRRkAox1fKen+FFO7rRDpx/6EUr9MyxMHIoU2Wp3TQYsFA8DJSzWOTTZ/BVaG2IcAdfKIONVgshR8SOO4LEnmshK/+kNyIRue3Z5/f6lfoFMLFkyCjGRWbj2cEkNCVmkXd1Q/ZFgztQa/+xtO4bfAgygkRGS1MdbE663BQPvN01mXmstKcO29910Vyn3k3ugafYXx3p9rct7XZ6SPMOQzx6UjFoNYaJdCM+2oup90n32uPsBQ85T0uvKaKPaURc0p+1Iz5gwzR99/mPxn3ACXa997pXv09aXnETvdtZJmYvWYnXs7uMGDAzaMVJPclO+1+Qa5HyBg2oVEY4cVnKj7KyJjkKspBYAS68KGKK3iDioCWrk8323wm7hz4ReGubDI9mOV7YDmrAbz10AMqd02RTRNxKMZUtjfThibkRMnE=","ak.pv":"114","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.bpcip","ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);</script></head>
+  <body>
+    <main class="page">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="vertical-buffer">
+              <h1>Bienvenidos a la guía de estilo para gob.mx </h1>
+              <h2 id="objetivo">Objetivo</h2>
+              <hr class="red">
+              <p>Con el objetivo de estandarizar la estructura de los contenidos en las dependencias, se ha realizado el siguiente documento, que funciona como una guía compuesta por un conjunto de elementos específicos que se deben de cumplir al momento de realizar la maquetación de los trámites en línea.</p>
+
+              <p>La gráfica base sirve como referencia para organizar la información y la forma en la que esta estará disponible, para facilitar a nuestros usuarios que accedan de manera sencilla a todo el contenido que solicite.</p>
+            </div>
+
+            <h2 id="configuracion-basica">Configuración básica</h2>
+            <hr class="red">
+
+            <p>Este framework tiene la capacidad de insertar la cabecera y pie de página de <a href="https://www.gob.mx" target="_blank">www.gob.mx</a> de manera dinámica. El único requisito para lograr ese objetivo es ingresar una hoja de estilo y un javascript en todos los htmls que lo requieran. </p>
+            <p><strong>Es importante no descargar ningún archivo</strong>, se deben ocupar únicamente los alojados en nuestro CDN, ya que estos podrán cambiar de manera constante y sin previo aviso. </p>
+
+            <ol class="bottom-buffer space">
+              <li class="">Copie la ruta de la siguiente liga de nuestra hoja de estilos que se encontrará alojada en nuestro CDN: <code class="small">https://framework-gb.cdn.gob.mx/assets/styles/main.css</code></li>
+
+              <li>Antes de cerrarse la etiqueta <code>&lt;head&gt;</code> de cada html ingrese la ruta copiada de la hoja de estilo de la siguiente forma : <br><br>
+                  <div class="highlight"><pre><code><span class="nt">...</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://framework-gb.cdn.gob.mx/assets/styles/main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></div>
+              </li>
+              <li>Copie la ruta de la siguiente liga de nuestro archivo de javascript que se encontrará alojada en nuestro CDN: <code class="small">https://framework-gb.cdn.gob.mx/gobmx.js</code></li>
+              <li>Antes de cerrarse la etiqueta <code>&lt;body&gt;</code> de cada html ingrese la ruta del script copiada de la siguiente forma : <br><br>
+                <div class="highlight"><pre><code><span class="nt">...</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://framework-gb.cdn.gob.mx/gobmx.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span></code></pre></div>
+              </li>
+            </ol>
+
+            <div class="bottom-buffer">
+              <h4>Ambiente de prueba</h4>
+              <p>Para un mayor control y calidad se ha incluido un ambiente de QA en el que se va a liberar cada actualización de gráfica base y donde se podrán realizar cualquier tipo de pruebas correspondientes.</p>
+              <p>Para la hoja de estilos, la ruta en ambiente prueba será la siguiente: <code class="small">https://framework-gb.cdn.gob.mx/qa/assets/styles/main.css</code></p>
+              <p>Para el archivo javascript, la ruta en ambiente prueba será el siguiente: <code class="small">https://framework-gb.cdn.gob.mx/qa/gobmx.js</code></p>
+            </div>
+
+            <div class="bottom-buffer">
+              <h3>Rutas de archivos con conexión segura (https)</h3>
+              <p>Las ligas de Gráfica Base cuentan con conexión segura, sin embargo es importante considerar que, <strong>aunque el sitio NO cuente con certificado SSL, siempre deberán utilizarse las siguientes rutas,</strong> esto no afectará negativamente en los sitios:</p>
+
+              <strong>Ambiente de producción con certificado SSL</strong>
+              <ul>
+                <li>Hoja de estilos: <code class="small">https://framework-gb.cdn.gob.mx/assets/styles/main.css</code></li>
+                <li>Archivo javascript: <code class="small">https://framework-gb.cdn.gob.mx/gobmx.js</code></li>
+              </ul>
+
+              <strong>Ambiente QA con certificado SSL</strong>
+              <ul>
+                <li>Hoja de estilos: <code class="small">https://framework-gb.cdn.gob.mx/qa/assets/styles/main.css</code></li>
+                <li>Archivo javascript: <code class="small">https://framework-gb.cdn.gob.mx/qa/gobmx.js</code></li>
+              </ul>
+            </div>
+
+
+
+            <div class="gobmx-callout gobmx-callout-warning bottom-buffer">
+              <h4>Esta guía ya incluye los siguientes frameworks y librerías y por lo tanto se recomienda <big style="color:black">no agregarlos</big> dentro de los htmls:</h4>
+              
+              <ul>
+                <li>Bootstrap versión 3.4.1. Para más información consultar la <a href="https://getbootstrap.com/docs/4.5/getting-started/introduction/" target="_blank">documentación</a></li>
+                <li>Jquery versión 3.5.1. Para más información consultar la <a href="https://api.jquery.com/category/version/3.5/" target="_blank">documentación</a></li>
+                <li>Modernizr versión 3.11.0. Para más información consultar la <a href="http://modernizr.com/docs/" target="_blank">documentación</a></li>
+                <li>Popper versión 1.16.1. Para más información consultar la <a href="https://popper.js.org/" target="_blank">documentación</a></li>
+                <li>Montserrat (fuente tipográfica). Para más información consultar <a href="https://fonts.google.com/specimen/Montserrat" target="_blank">documentación</a></li>
+              </ul>
+              
+            </div>
+
+            <h4 class="top-buffer">Uso de título</h4>
+            <p>Todas las páginas que utilicen la gráfica base deberán tener un título utilizando la etiqueta <code>&lt;title&gt;</code> dentro de la etiqueta <code>&lt;head&gt;</code>.</p>
+            <div class="highlight"><pre><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">...</span>
+  <span class="nt">&lt;title&gt;</span>Ejemplo de nueva página para GOB.mx<span class="nt">&lt;/title&gt;</span>
+  <span class="nt">...</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Uso de favicon</h4>
+            <p>Descargar las imágenes favicon <a href="./assets/documents/favicons.zip">aquí</a> y agregar el archivo <em>favicon.ico</em> en el directorio raíz del sitio. Posteriormente se deberá vincular la imagen utilizando la etiqueta <code>&lt;link&gt;</code> dentro de la etiqueta <code>&lt;head&gt;</code>.</p>
+            <div class="highlight"><pre><code><span class="nt">&lt;head&gt;</span>
+  <span class="nt">...</span>
+  <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/favicon.ico"</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span><span class="nt">&gt;</span>
+  <span class="nt">...</span>
+<span class="nt">&lt;/head&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Aviso importante</h4>
+            <p>Se debe ocupar el siguiente código para ejecutar cualquier script: <code>
+      $gmx(document).ready(function(){ ... });  </code> </p>
+            <p>Aunque jQuery ofrece el evento <code>$(document).ready()</code>, el cual se disparará únicamente hasta que todos los assets se hayan recibido correctamente, en el caso particular para el framework de gob.mx será necesario <code>$gmx(document).ready()</code>, para asegurarnos que todos los scripts y plugins que han sido llamados dinámicamente hayan terminado de cargarse de manera correcta.</p>
+
+
+           <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;script&gt;</span>
+  <span class="nx">$gmx</span><span class="p">(</span><span class="kd">document).ready</span><span class="p">(function()</span> <span class="p">{</span>
+    ...
+  <span class="p">});</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+
+            <h4 class="top-buffer">Casos especiales para uso de jQuery</h4>
+            <p>En casos donde sea necesario ocupar una versión distinta de Jquery, esta podrá incluirse dentro la etiqueta <code>&lt;head&gt;</code> aunque es requisito que la versión sea <strong>1.9.0</strong> o mayor.</p>
+            <p>Para casos donde se necesiten dos versiones distintas de jQuery dentro del mismo archivo (no recomendable), leer este <a href="https://api.jquery.com/jquery.noconflict/" target="_blank">documento</a>.</p>
+
+
+            <div class="top-buffer">
+              <h2 id="ejemplo-basico">Ejemplo básico</h2>
+              <hr class="red">
+              <p>Este es el template básico para agregar una nueva página. Para que el framework funcione correctamente se debe incorporar la liga de los estilos dentro de la etiqueta <code>&lt;head&gt;</code>, y la liga del script antes de cerrarse la etiqueta <code>&lt;body&gt;</code>.</p>
+
+
+              <div class="highlight"><pre><code class="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">lang=</span><span class="s">"es"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"X-UA-Compatible"</span> <span class="na">content=</span><span class="s">"IE=edge"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"viewport"</span> <span class="na">content=</span><span class="s">"width=device-width, initial-scale=1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Ejemplo de nueva página para GOB.mx<span class="nt">&lt;/title&gt;</span>
+
+
+    <span class="c">&lt;!-- CSS --&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/favicon.ico"</span> <span class="na">rel=</span><span class="s">"shortcut icon"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"https://framework-gb.cdn.gob.mx/assets/styles/main.css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span><span class="nt">&gt;</span>
+
+    <span class="c">&lt;!-- Respond.js soporte de media queries para Internet Explorer 8 --&gt;</span>
+    <span class="c">&lt;!-- ie8.js EventTarget para cada nodo en Internet Explorer 8 --&gt;</span>
+    <span class="c">&lt;!--[if lt IE 9]&gt;</span>
+      <span class="c">&lt;script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"&gt;&lt;/script&gt;</span>
+      <span class="c">&lt;script src="https://cdnjs.cloudflare.com/ajax/libs/ie8/0.2.2/ie8.js"&gt;&lt;/script&gt;</span>
+    <span class="c">&lt;![endif]--&gt;</span>
+
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+
+    <span class="c">&lt;!-- Contenido --&gt;</span>
+    <span class="nt">&lt;main</span> <span class="na">class=</span><span class="s">"page"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/main&gt;</span>
+
+    <span class="c">&lt;!-- JS --&gt;</span>
+    <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://framework-gb.cdn.gob.mx/gobmx.js"</span><span class="nt">&gt;&lt;/script&gt;</span>
+
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre></div>
+            </div>
+            <div class="top-buffer">
+              <h2 id="sistema-de-reticula">Sistema de retícula</h2>
+              <hr class="red">
+              <p>Se incluyó un sistema responsivo, este sistema de fluido se escala de manera apropiada hasta 12 columnas de acuerdo al tamaño del dispositivo o ventana gráfica.</p>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="gobmx-docs-sidenav hidden-xs hidden-sm">
+              <div class="docs-nav-logo red">
+                <small>Guía de estilo para diseño</small>
+              </div>
+              <ul class="docs-nav">
+                <li><a class="" href="https://www.gob.mx/guias/grafica/v4/">Versión 4 de gráfica base</a></li>
+                <li><a class="" href="#objetivo">Objetivo</a></li>
+                <li><a class="" href="#configuracion-basica">Configuración básica</a></li>
+                <li><a class="" href="#ejemplo-basico">Ejemplo básico</a></li>
+                <li><a class="" href="#sistema-de-reticula">Sistema de retícula</a></li>
+                <li><a class="" href="#colores">Colores</a></li>
+                <li><a class="" href="#navegacion">Barra de subnavegación</a></li>
+                <li><a class="" href="#formulario">Formulario</a></li>
+                <li><a class="" href="#botones">Botones</a></li>
+                <li><a class="" href="#encabezados">Encabezados</a></li>
+                <li><a class="" href="#separadores">Separadores</a></li>
+                <li><a class="" href="#cuerpo-de-texto">Cuerpo de texto</a></li>
+                <li><a class="" href="#tablas">Tablas</a></li>
+                <li><a class="" href="#alertas">Alertas</a></li>
+                <li><a class="" href="#breadcrumbs">Breadcrumbs</a></li>
+                <li><a class="" href="#tooltips">Tooltips</a></li>
+                <li><a class="" href="#paneles-colapsables">Paneles colapsables</a></li>
+                <li><a class="" href="#tabs">Pestañas (tabs)</a></li>
+                <li><a class="" href="#modals">Ventanas modales</a></li>
+                <li><a class="" href="#datepicker">Selector de fechas</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/calendario-citas.html">Calendario citas</a></li>
+                <li><a class="" href="#iconos">Íconos</a></li>
+                <li><a class="" href="#iframes">Iframes</a></li>
+                <li><a class="" href="#clases">Clases de ayuda</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/demo.html">Formulario básico</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/pasos-formulario.html">Pasos de formulario</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/migracion.html">Migración a gob.mx</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/paginas-error.html">Páginas de error</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/faq.html">Preguntas frecuentes</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/assets/documents/manual-de-uso.pdf">Manual de uso</a></li>
+                <li><a class="" href="https://framework-gb.cdn.gob.mx/qa/changelog.html"><small>changelog</small></a></li>
+              </ul>
+            </div>
+          </div><!--- menú -->
+
+
+        </div>
+        <h4>Ejemplo:</h4>
+        <div class="row show-grid">
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+          <div class="col-md-1">.col-md-1</div>
+        </div>
+
+        <div class="row show-grid">
+          <div class="col-md-8">.col-md-8</div>
+          <div class="col-md-4">.col-md-4</div>
+        </div>
+
+        <div class="row show-grid">
+          <div class="col-md-4">.col-md-4</div>
+          <div class="col-md-4">.col-md-4</div>
+          <div class="col-md-4">.col-md-4</div>
+        </div>
+
+        <div class="row show-grid">
+          <div class="col-md-6">.col-md-6</div>
+          <div class="col-md-6">.col-md-6</div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-1"</span><span class="nt">&gt;</span>.col-md-1<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-8"</span><span class="nt">&gt;</span>.col-md-8<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-4"</span><span class="nt">&gt;</span>.col-md-4<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-md-6"</span><span class="nt">&gt;</span>.col-md-6<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre>
+      </div>
+          </div>
+        </div>
+
+        <div class="row colors">
+          <div class="col-sm-8">
+            <h2 id="colores" >Gama de colores</h2>
+            <hr class="red">
+            <p>Los colores aquí especificados son los que deberán utilizarse en el contenido. El cuerpo de texto dentro de los documentos deberá ir en negro #545454.</p>
+
+            <dl class="top-buffer">
+              <dt>#000000</dt>
+              <dd class="gobmx-example-color color-01"  style="background-color:#000"></dd>
+              <dt>#272829</dt>
+              <dd class="gobmx-example-color color-01"  style="background-color:#272829"></dd>
+              <dt>#393C3E</dt>
+              <dd class="gobmx-example-color color-02" style="background-color:#393C3E"></dd>
+              <dt>#545454</dt>
+              <dd class="gobmx-example-color color-03" style="background-color:#545454"></dd>
+              <dt>#DDDDDD</dt>
+              <dd class="gobmx-example-color color-03" style="background-color:#DDDDDD"></dd>
+              <dt>#F6F6F6</dt>
+              <dd class="gobmx-example-color color-03" style="background-color:#f6f6f6"></dd>
+              <dt>#FFFFFF</dt>
+              <dd class="gobmx-example-color color-07"></dd>
+              <dt>#D0021B</dt>
+              <dd class="gobmx-example-color color-04" style="background-color:#D0021B"></dd>
+              <dt>#4D92DF</dt>
+              <dd class="gobmx-example-color color-06" style="background-color:#4D92DF"></dd>
+            </dl>
+
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="vertical-buffer">
+              <h2 id="navegacion">Barra de subnavegación</h2>
+              <hr class="red">
+              <p>La barra de  subnavegación es un componente que podrá contener encabezados de navegación en su aplicación o sitio para un uso muy particular. En vistas de móviles están expandidos, y se vuelven horizontales cuando aumenta el ancho de la ventanilla disponible. En caso de utilizar, se deberá de crear justo después de que se haya abierto la etiqueta <code>&lt;main&gt;</code>.</p>
+
+            </div>
+            <h4>Ejemplo básico</h4>
+            <div class="example">
+              <nav role="navigation" class="sub-navbar demo navbar navbar-inverse ">
+                <div class="container-">
+
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subenlaces">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Semarnat</a>
+                  </div>
+
+                  <div class="collapse navbar-collapse" id="subenlaces">
+                    <ul class="nav navbar-nav navbar-right">
+                      <li><a href="#">Enlace</a></li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Desplegable <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Acción</a></li>
+                          <li><a href="#">Otra acción</a></li>
+                          <li><a href="#">Algo más aquí</a></li>
+                          <li class="divider"></li>
+                          <li><a href="#">Enlace separado</a></li>
+                        </ul>
+                      </li>
+                       <li><a href="#">Enlace</a></li>
+                    </ul>
+                  </div>
+
+                </div>
+              </nav>
+            </div>
+
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;nav</span> <span class="na">class=</span><span class="s">"navbar navbar-inverse sub-navbar navbar-fixed-top"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"container"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"navbar-header"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"navbar-toggle collapsed"</span> <span class="na">data-toggle=</span><span class="s">"collapse"</span> <span class="na">data-target=</span><span class="s">"#subenlaces"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"sr-only"</span><span class="nt">&gt;</span>Interruptor de Navegación<span class="nt">&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+        <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-bar"</span><span class="nt">&gt;&lt;/span&gt;</span>
+      <span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;a</span> <span class="na">class=</span><span class="s">"navbar-brand"</span> <span class="na">href=</span><span class="s">"/"</span><span class="nt">&gt;</span>Semarnat<span class="nt">&lt;/a&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"collapse navbar-collapse"</span> <span class="na">id=</span><span class="s">"subenlaces"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav navbar-nav navbar-right"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Enlace<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+        <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"dropdown"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"#"</span> <span class="na">class=</span><span class="s">"dropdown-toggle"</span> <span class="na">data-toggle=</span><span class="s">"dropdown"</span> <span class="na">role=</span><span class="s">"button"</span> <span class="na">aria-expanded=</span><span class="s">"false"</span><span class="nt">&gt;</span>Desplegable <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"caret"</span><span class="nt">&gt;&lt;/span&gt;&lt;/a&gt;</span>
+          <span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"dropdown-menu"</span> <span class="na">role=</span><span class="s">"menu"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Acción<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Otra acción<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Algo más aquí<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"divider"</span><span class="nt">&gt;&lt;/li&gt;</span>
+            <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Enlace separado<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+          <span class="nt">&lt;/ul&gt;</span>
+        <span class="nt">&lt;/li&gt;</span>
+      <span class="nt">&lt;/ul&gt;</span>
+    <span class="nt">&lt;/div&gt;</span><span class="c"></span>
+  <span class="nt">&lt;/div&gt;</span><span class="c"></span>
+<span class="nt">&lt;/nav&gt;</span></code></pre></div>
+          </div>
+        </div>
+
+        <div class="row top-buffer">
+          <div class="col-sm-8">
+            <h4>Uso de logotipos</h4>
+            <p>Los logotipos de cada secretaría o dependencia se deberán de colorar en la parte superior justo después del breadcrumb. Cada logotipo deberá tener un máximo proporcional a 120px de ancho.</p>
+          </div>
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-sm-8">
+            <div class="vertical-buffer">
+              <h2 id="formulario">Formulario</h2>
+              <hr class="red">
+              <p>Los controles de formularios individuales reciben automáticamente algunos estilos globales. Todos los elemento <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code> y <code>&lt;select&gt;</code> con la clase <code>.form-control</code> se componen de un ancho de 100% de forma predeterminada. Para un espaciado más óptimo se deben envolver las etiquetas y los controles con la clase <code>.form-group</code> .</p>
+            </div>
+            <h4>Ejemplo básico</h4>
+            <div class="example clearfix">
+              <form>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Correo electrónico:</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresa tu email">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Contraseña:</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Ingresa tu contraseña">
+                </div>
+                <div class="form-group hidden-xs ">
+                  <label for="exampleInputFile">Subir archivo:</label>
+                  <input type="file" id="exampleInputFile">
+
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Acepto los términos
+                  </label>
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary pull-right">Enviar</button>
+              </form>
+            </div>
+
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;form</span> <span class="na">role=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"email-01"</span><span class="nt">&gt;</span>Correo electrónico:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"email-01"</span> <span class="na">placeholder=</span><span class="s">"Correo electrónico"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"password-01"</span><span class="nt">&gt;</span>Contraseña<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"password-01"</span> <span class="na">placeholder=</span><span class="s">"Contraseña"</span> <span class="na">type=</span><span class="s">"password"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"file-01"</span><span class="nt">&gt;</span>Cargar archivo:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">"file-01"</span> <span class="na">type=</span><span class="s">"file"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      Acepto los términos
+    <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">rows=</span><span class="s">"3"</span><span class="nt">&gt;</span><span class="nt">&lt;/textarea&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary pull-right"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Enviar<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Formulario lineal</h4>
+            <p>Se debe añadir la clase <code>.form-inline</code> al  <code>&lt;form&gt;</code> para los controles con alineación a la izquierda y de tipo inline-block. Esto únicamente se aplica a las formas con ventanas que son al menos 768px de ancho.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class="example">
+              <form class="form-inline">
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputEmail2">Correo Electrónico</label>
+                  <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Ingresa tu email">
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="exampleInputPassword2">Contraseña</label>
+                  <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Ingresa tu contraseña">
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox"> Recordarme
+                  </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Ingresar</button>
+              </form>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-inline"</span> <span class="na">role=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"sr-only"</span> <span class="na">for=</span><span class="s">"email-02"</span><span class="nt">&gt;</span>Correo electrónico:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"email-02"</span> <span class="na">placeholder=</span><span class="s">"Ingrese su email"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"sr-only"</span> <span class="na">for=</span><span class="s">"password-02"</span><span class="nt">&gt;</span>Contraseña<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"password-02"</span> <span class="na">placeholder=</span><span class="s">"Ingrese su contraseña"</span> <span class="na">type=</span><span class="s">"password"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+      Recordarme
+    <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Ingresar<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <h4 class="top-buffer">Horizontal</h4>
+            <p>Utilice las clases de cuadrícula predefinidos para alinear las etiquetas y los grupos de controles de formulario en una disposición horizontal añadiendo- <code>.form-horizontal</code> al formulario. El agregar esa clase cambiará el comportamiento de <code>.form-groups </code>por filas de cuadrícula, así que no hay necesidad de <code>.row</code>.</p>
+            <div class="example">
+              <form class="form-horizontal" role="form">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="email-03">Nombre:</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="email-03" placeholder="Ingresa tu nombre" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label" for="password-03">Contraseña:</label>
+                  <div class="col-sm-9">
+                    <input class="form-control" id="password-03" placeholder="Ingresa tu contraseña" type="password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-9">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox">
+                        Recordarme
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button class="btn btn-primary pull-right" type="submit">Enviar</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;form</span> <span class="na">class=</span><span class="s">"form-horizontal"</span> <span class="na">role=</span><span class="s">"form"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"col-sm-3 control-label"</span> <span class="na">for=</span><span class="s">"email-03"</span><span class="nt">&gt;</span>Correo electrónico:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"email-03"</span> <span class="na">placeholder=</span><span class="s">"Correo electrónico"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"col-sm-3 control-label"</span> <span class="na">for=</span><span class="s">"password-03"</span><span class="nt">&gt;</span>Contraseña:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-9"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"password-03"</span> <span class="na">placeholder=</span><span class="s">"Contraseña"</span> <span class="na">type=</span><span class="s">"password"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-offset-3 col-sm-9"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;label&gt;</span>
+          <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+          Recordarme
+        <span class="nt">&lt;/label&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"col-sm-offset-3 col-sm-9"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary pull-right"</span> <span class="na">type=</span><span class="s">"submit"</span><span class="nt">&gt;</span>Enviar<span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/form&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Caja sencilla de texto</h4>
+            <p>Elemento que sirve para insertar una sola línea de texto.</p>
+            <div class="example">
+              <form role="form">
+                <div class="form-group">
+                  <input class="form-control" placeholder="Área de texto" type="text">
+                </div>
+              </form>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Area de texto"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Cajas para múltiples líneas de texto</h4>
+            <p>Elemento que sirve para insertar múltiples líneas de texto.</p>
+            <div class="example">
+              <form role="form">
+                <div class="form-group">
+                  <textarea class="form-control" placeholder="Área de texto" rows="3"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;textarea</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">placeholder=</span><span class="s">"Área de texto"</span> <span class="na">rows=</span><span class="s">"3"</span><span class="nt">&gt;&lt;/textarea&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Casillas de verificación y botones de opción</h4>
+            <p>Ejemplos para agregar casillas de verificación (checkbox) y botones de opción (radio).</p>
+            <div class="example">
+              <form role="form">
+                <p>
+                  <strong>Ejemplo de casillas de verificación (checkbox)</strong>
+                </p>
+                <div class="checkbox">
+                  <label>
+                    <input checked="" name="checkbox-01" type="checkbox" value="opcion-01">Opción 1
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input name="checkbox-01" type="checkbox" value="opcion-02">Opción 2
+                  </label>
+                </div>
+                <div class="checkbox">
+                  <label>
+                    <input name="checkbox-01" type="checkbox" value="opcion-03">Opción 3
+                  </label>
+                </div>
+                <p>
+                  <strong>Ejemplo de botón de opción (radio)</strong>
+                </p>
+                <div class="radio">
+                  <label>
+                    <input checked="" name="radio-01" type="radio" value="opcion-01">Opción 1
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input name="radio-01" type="radio" value="opcion-02">Opción 2
+                  </label>
+                </div>
+                <div class="radio">
+                  <label>
+                    <input name="radio-01" type="radio" value="opcion-03">Opción 3
+                  </label>
+                </div>
+              </form>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"checkbox"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"opcion-01"</span><span class="nt">&gt;</span> Opción 1
+  <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"opcion-02"</span><span class="nt">&gt;</span> Opción 2
+  <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"checkbox"</span> <span class="na">value=</span><span class="s">"opcion-03"</span><span class="nt">&gt;</span> Opción 3
+  <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+...
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"radio"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radio-01"</span> <span class="na">value=</span><span class="s">"opcion-01"</span> <span class="na">checked=</span><span class="s">"checked"</span><span class="nt">&gt;</span> Opción 1
+  <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radio-01"</span> <span class="na">value=</span><span class="s">"opcion-02"</span> <span class="na">checked=</span><span class="s">"checked"</span><span class="nt">&gt;</span> Opción 2
+  <span class="nt">&lt;/label&gt;</span>
+  <span class="nt">&lt;label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">type=</span><span class="s">"radio"</span> <span class="na">name=</span><span class="s">"radio-01"</span> <span class="na">value=</span><span class="s">"opcion-03"</span> <span class="na">checked=</span><span class="s">"checked"</span><span class="nt">&gt;</span> Opción 3
+  <span class="nt">&lt;/label&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Campos de selección</h4>
+            <p>Usa el comportamiento nativo o agrega el atributo <code>multiple</code> para seleccionar múltiples opciones.</p>
+            <div class="gobmx-example">
+              <form role="form">
+                <div class="form-group">
+                  <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" multiple="">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                  </select>
+                </div>
+              </form>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;select</span> <span class="na">class=</span><span class="s">"form-control"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option&gt;</span>1<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>2<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>3<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>4<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>5<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span>
+...
+<span class="nt">&lt;select</span> <span class="na">multiple</span> <span class="na">class=</span><span class="s">"form-control"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;option&gt;</span>1<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>2<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>3<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>4<span class="nt">&lt;/option&gt;</span>
+  <span class="nt">&lt;option&gt;</span>5<span class="nt">&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span></code></pre></div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+            <div class="top-buffer">
+              <h2 id="botones">Botones</h2>
+              <hr class="red">
+              <p>Los botones en una interfaz son elementos vitales, ya que en la mayoría de los casos reúnen muchas de las capacidades de navegación que su creador ha concebido.</p>
+              <p>Utilice cualquiera de las clases de botones disponibles para crear rápidamente un botón con estilo.</p>
+              <p>Para más información ingrese a: <a href="botones.html">ejemplos de caso de uso</a>.</p>
+              <div class="example">
+                <button type="button" class="btn btn-default">Básico</button>
+                <button type="button" class="btn btn-danger">Error</button>
+                <button type="button" class="btn btn-primary">Primario</button>
+                <button type="button" class="btn btn-link">Hipervínculo</button>
+              </div>
+              <div class="highlight"><pre><code class="html"><span class="c">&lt;!-- Botón básico --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Básico<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">&lt;!-- Botón de error --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-danger"</span><span class="nt">&gt;</span>Error<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">&lt;!-- Botón primario --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Primario<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">&lt;!-- Botón tipo hipervínculo --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-link"</span><span class="nt">&gt;</span>Hipervínculo<span class="nt">&lt;/button&gt;</span></code></pre></div>
+            </div>
+
+
+
+            <h4 class="top-buffer">Tamaños de botones</h4>
+            <p>Aquí se detalla los diferentes tamaños que tienen los botones. Agrega la clase <code>.btn-lg</code>, <code>.btn-sm</code>, o <code>.btn-xs</code> para modificar el tamaño del botón.</p>
+
+            <div class="example">
+              <p>
+                <button class="btn btn-default btn-lg" type="button">Grande</button>
+                <button class="btn btn-primary btn-lg" type="button">Grande</button>
+              </p>
+              <p>
+                <button class="btn btn-default" type="button">Básico</button>
+                <button class="btn btn-primary" type="button">Básico</button>
+              </p>
+              <p>
+                <button class="btn btn-default btn-sm" type="button">Chico</button>
+                <button class="btn btn-primary btn-sm" type="button">Chico</button>
+              </p>
+              <p>
+                <button class="btn btn-default btn-xs" type="button">Extra chico</button>
+                <button class="btn btn-primary btn-xs" type="button">Extra chico</button>
+              </p>
+            </div>
+
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Grande<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Grande<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Básico<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Básico<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default btn-sm"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Chico<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-sm"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Chico<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;p&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default btn-xs"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Extra chico<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-xs"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Extra chico<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/p&gt;</span></code></pre></div>
+
+
+            <h4 class="top-buffer">Estado activo</h4>
+            <p>Los botones aparecen con una sombra interna, color de fondo y borde más oscuro. Agrega la clase  <code>.active</code>  sólo   para las etiquetas <code>&lt;a&gt;</code> o <code>&lt;button&gt;</code>.</p>
+            <div class="example">
+              <button class="btn btn-default active" type="button">Ejemplo</button>
+              <button class="btn btn-primary active" type="button">Ejemplo</button>
+            </div>
+
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg active"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Ejemplo<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg active"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Ejemplo<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Botones deshabilitados</h4>
+            <p>Los botones deshabilitados funcionan igual que los activos. Si se desea cambiar la apariencia del botón agrega la clase <code>.disabled</code> a los botones que necesites deshabilitar.</p>
+
+            <div class="example">
+              <button class="btn btn-default disabled" type="button">Ejemplo</button>
+              <button class="btn btn-primary disabled" type="button">Ejemplo</button>
+            </div>
+
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default btn-lg disabled"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Ejemplo<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary btn-lg disabled"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>Ejemplo<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+
+            <h4 class="top-buffer">Grupo de botones</h4>
+            <p>Serie de botones a la vez en una sola línea con el grupo de botones.</p>
+            <div class="example">
+              <div class="btn-group" role="group">
+                <button type="button" class="btn btn-default">Izquierda</button>
+                <button type="button" class="btn btn-default">Centro</button>
+                <button type="button" class="btn btn-default">Derecha</button>
+              </div>
+            </div>
+
+
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group"</span> <span class="na">role=</span><span class="s">"group"</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Izquierda<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Centro<span class="nt">&lt;/button&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span><span class="nt">&gt;</span>Derecha<span class="nt">&lt;/button&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+
+            <h4 class="top-buffer">Grupo de botones vertical</h4>
+            <p>Conjunto de botones que aparecerán apilados verticalmente en lugar de horizontal.</p>
+            <div class="example" data-example-id="vertical-button-group">
+              <div class="btn-group-vertical" role="group" aria-label="Vertical button group">
+                <button type="button" class="btn btn-default">Botón</button>
+                <button type="button" class="btn btn-default">Botón</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupVerticalDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop1">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                  </ul>
+                </div>
+                <button type="button" class="btn btn-default">Botón</button>
+                <button type="button" class="btn btn-default">Botón</button>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupVerticalDrop2" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop2">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupVerticalDrop3" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop3">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                  </ul>
+                </div>
+                <div class="btn-group" role="group">
+                  <button id="btnGroupVerticalDrop4" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                    <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupVerticalDrop4">
+                    <li><a href="#">Dropdown link</a></li>
+                    <li><a href="#">Dropdown link</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group-vertical"</span> <span class="na">role=</span><span class="s">"group"</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Grupo de botones justificados</h4>
+            <p>Grupo de botones que abarcarán todo el ancho de su contenedor. También funciona con menús desplegables de los botones dentro del grupo de botones.</p>
+
+            <div class="example" data-example-id="simple-justified-button-group">
+              <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group">
+                <a href="#" class="btn btn-default" role="button">Izquierda</a>
+                <a href="#" class="btn btn-default" role="button">Centro</a>
+                <a href="#" class="btn btn-default" role="button">Derecha</a>
+              </div>
+              <br>
+              <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group with nested dropdown">
+                <a href="#" class="btn btn-default" role="button">Izquierda</a>
+                <a href="#" class="btn btn-default" role="button">Centro</a>
+                <div class="btn-group" role="group">
+                  <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                    Desplegable <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"btn-group btn-group-justified"</span> <span class="na">role=</span><span class="s">"group"</span> <span class="na">aria-label=</span><span class="s">"..."</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Botones con ícono</h4>
+            <p>Estos botones van acompañados de un ícono que representa su acción, además del texto.</p>
+            <div class="example">
+              <button class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+                Ejemplo
+              </button>
+              <button class="btn btn-primary" type="button">
+                <span class="glyphicon glyphicon-search"></span>
+                Ejemplo
+              </button>
+              <button class="btn btn-default" type="button">
+                Ejemplo
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+              <button class="btn btn-primary" type="button">
+                Ejemplo
+                <span class="glyphicon glyphicon-search"></span>
+              </button>
+            </div>
+
+            <div class="highlight"><pre><code class="html"><span class="c">&lt;!-- Icono del lado izquierdo del botón --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
+  Ejemplo
+<span class="nt">&lt;/button&gt;</span>
+
+<span class="c">&lt;!-- Icono del lado derecho del botón --&gt;</span>
+<span class="nt">&lt;button</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span> <span class="na">type=</span><span class="s">"button"</span><span class="nt">&gt;</span>
+  Ejemplo
+  <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-search"</span><span class="nt">&gt;&lt;/span&gt;</span>
+<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-8">
+
+
+            <h4 class="top-buffer">Paginación</h4>
+            <hr class="red">
+            <p>En esta sección se describe todo lo relacionado con paginadores.</p>
+            <div class="gobmx-example">
+              <ul class="pagination">
+                <li>
+                  <a href="#">«</a>
+                  </li><li>
+                    <a href="#">1</a>
+                  </li>
+                  <li>
+                    <a href="#">2</a>
+                  </li>
+                  <li>
+                    <a href="#">3</a>
+                  </li>
+                  <li>
+                    <a href="#">4</a>
+                  </li>
+                  <li>
+                    <a href="#">5</a>
+                  </li>
+                <li>
+                  <a href="#">»</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"pagination"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span><span class="ni">&amp;laquo;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>5<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span><span class="ni">&amp;raquo;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
+
+
+
+            <div class="top-buffer">
+              <h2 id="encabezados">Encabezados</h2>
+              <hr class="red">
+              <p>Los siguientes son ejemplos de encabezados con diferentes tamaños de letra.</p>
+              <h1>h1. Ejemplo Texto</h1>
+              <h2>h2. Ejemplo Texto</h2>
+              <h3>h3. Ejemplo Texto</h3>
+              <h4>h4. Ejemplo Texto</h4>
+              <h5>h5. Ejemplo Texto</h5>
+              <h6>h6. Ejemplo Texto</h6>
+              <p>Los títulos y subtítulos deberán ocupar sólo 2/3 del formulario web, es decir, 8 columnas. El tamaño de fuente de los títulos corresponderá a h1, y el de los subtitulos a h2. En caso de que el título sea muy extenso podrá colocarlo en h2.</p>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;h1&gt;</span>h1. Ejemplo Texto<span class="nt">&lt;/h1&gt;</span>
+<span class="nt">&lt;h2&gt;</span>h2. Ejemplo Texto<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;h3&gt;</span>h3. Ejemplo Texto<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;h4&gt;</span>h4. Ejemplo Texto<span class="nt">&lt;/h4&gt;</span>
+<span class="nt">&lt;h5&gt;</span>h5. Ejemplo Texto<span class="nt">&lt;/h5&gt;</span>
+<span class="nt">&lt;h6&gt;</span>h6. Ejemplo Texto<span class="nt">&lt;/h6&gt;</span></code></pre></div>
+
+            <div class="top-buffer">
+              <h2 id="separadores">Separadores</h2>
+              <hr class="red">
+              <hr>
+              <p> El uso de separadores se podrá aplicar cuando se necesite mostrar una separación de contenido. La etiqueta <code class="small">&lt;hr&gt;</code> agregará márgenes posteriores y superiores en el documento.</p>
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>Lorem ipsum dolor...<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;hr&gt;</span>
+<span class="nt">&lt;p&gt;</span>Lorem ipsum dolor...<span class="nt">&lt;/p&gt;</span></code></pre></div>
+
+              <h3>Separadores para encabezados</h3>
+              <hr class="red">
+              <p> Existen los separadores que vienen acompañados de un encabezado. Para ese caso se le agregará la clase <code>red</code> para crear un separador con un pequeño rectángulo rojo.   <code class="small">&lt;hr class= "red"&gt;</code> </p>
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;h3&gt;</span>h3. Ejemplo texto<span class="nt">&lt;/h3&gt;</span>
+<span class="nt">&lt;hr class="red"&gt;</span></code></pre></div>
+            </div>
+
+            <div class="top-buffer">
+              <h2 id="cuerpo-de-texto">Cuerpo de texto</h2>
+              <hr class="red">
+              <p>El tamaño de fuente estandarizado es de 18px, con un interlineado de 1.428. Esto se aplica a todo el contenido dentro de body. El tamaño mínimo recomendable para el texto es de 16px.</p>
+              <p>Para más información ingrese a: <a href="tipografia.html">ejemplos de caso de uso</a>.</p>
+              <div class="example">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur libero id gravida volutpat. Nunc mauris lorem, sodales eu suscipit id, fermentum vitae neque.</p>
+                <p>Mauris nec massa sem. Etiam quis ipsum in quam consequat bibendum et in ipsum. Suspendisse faucibus metus lacus, vitae adipiscing lacus tincidunt vel.</p>
+                <p>Praesent id dui suscipit, consectetur ante eget, commodo velit. Vivamus ac turpis nec lectus tincidunt vestibulum vel in odio. Sed ullamcorper eu massa quis porta. Cras at erat lectus.</p>
+                <p>Ut vel varius felis. Suspendisse potenti. Curabitur luctus eros vel massa adipiscing lacinia. Sed bibendum interdum mi nec interdum. Integer nec erat enim.</p>
+              </div>
+
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;p&gt;</span>Lorem ipsum dolor...<span class="nt">&lt;/p&gt;</span></code></pre></div>
+
+            </div>
+
+            <div class="top-buffer">
+              <h4>Lista desordenada</h4>
+              <ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Vivamus sed leo mollis, ullamcorper lacus et, aliquet nibh.</li>
+                <li>Nunc nec accumsan nunc. Cras ac lorem a tellus pulvinar pulvinar.</li>
+                <li>In dignissim tortor id libero vulputate mollis.</li>
+              </ul>
+            </div>
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Lorem ipsum dolor...<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
+
+              <h4 class="top-buffer">Lista ordenada</h4>
+              <ol>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Vivamus sed leo mollis, ullamcorper lacus et, aliquet nibh.</li>
+                <li>Nunc nec accumsan nunc. Cras ac lorem a tellus pulvinar pulvinar.</li>
+                <li>In dignissim tortor id libero vulputate mollis.</li>
+              </ol>
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;ol&gt;</span>
+  <span class="nt">&lt;li&gt;</span>Lorem ipsum dolor...<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Lista sin estilos</h4>
+            <ul class="list-unstyled">
+              <li>Lorem ipsum dolor sit amet</li>
+              <li>Consectetur adipiscing elit</li>
+              <li>Nulla volutpat aliquam velit
+                <ul>
+                  <li>Phasellus iaculis neque</li>
+                  <li>Purus sodales ultricies</li>
+                  <li>Vestibulum laoreet porttitor sem</li>
+                  <li>Ac tristique libero volutpat at</li>
+                </ul>
+              </li>
+              <li>Faucibus porta lacus fringilla vel</li>
+              <li>Aenean sit amet erat nunc</li>
+              <li>Eget porttitor lorem</li>
+            </ul>
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-unstyled"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
+
+            <h4 class="top-buffer">Listado horizontal</h4>
+            <ul class="list-inline">
+              <li>Lorem ipsum</li>
+              <li>Phasellus iaculis</li>
+              <li>Nulla volutpat</li>
+            </ul>
+            <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"list-inline"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;</span>...<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span></code></pre></div>
+
+
+            <div class="vertical-buffer">
+              <h2 id="tablas">Tablas</h2>
+              <hr class="red">
+              <p>Para el relleno básico estilo-luz y sólo divisores horizontales se debe añadir la clase base <code>.table</code> a cualquier tabla.</p><br>
+              <h4>Ejemplo básico</h4>
+              <table class="table">
+                <caption>Título opcional de la tabla.</caption>
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table"</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+              <h4 class="top-buffer">Filas marcadas con franjas</h4>
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-striped"</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+              <h4 class="top-buffer">Tablas bordeadas</h4>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Larry</td>
+                    <td>the Bird</td>
+                    <td>@twitter</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-bordered"</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+              <h4 class="top-buffer">Tablas responsivas</h4>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th data-replace-tmp-key="3af3b0d16016859c0c3b7335d4837859"><os-p key="3af3b0d16016859c0c3b7335d4837859">Encabezado de cuadro</os-p></th>
+                      <th data-replace-tmp-key="3af3b0d16016859c0c3b7335d4837859"><os-p key="3af3b0d16016859c0c3b7335d4837859">Encabezado de cuadro</os-p></th>
+                      <th data-replace-tmp-key="3af3b0d16016859c0c3b7335d4837859"><os-p key="3af3b0d16016859c0c3b7335d4837859">Encabezado de cuadro</os-p></th>
+                      <th data-replace-tmp-key="3af3b0d16016859c0c3b7335d4837859"><os-p key="3af3b0d16016859c0c3b7335d4837859">Encabezado de cuadro</os-p></th>
+                      <th data-replace-tmp-key="3af3b0d16016859c0c3b7335d4837859"><os-p key="3af3b0d16016859c0c3b7335d4837859">Encabezado de cuadro</os-p></th>
+                      <th data-replace-tmp-key="3af3b0d16016859c0c3b7335d4837859"><os-p key="3af3b0d16016859c0c3b7335d4837859">Encabezado de cuadro</os-p></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                      <td data-replace-tmp-key="b464dc013088c487b61115eaa5cdff89"><os-p key="b464dc013088c487b61115eaa5cdff89">Celda de cuadro</os-p></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;table</span> <span class="na">class=</span><span class="s">"table table-responsive"</span><span class="nt">&gt;</span>
+  ...
+<span class="nt">&lt;/table&gt;</span></code></pre></div>
+
+              <h2 id="alertas" class="top-buffer">Alertas</h2>
+              <hr class="red">
+              <h3>Ejemplo de alerta básico</h3>
+              <p>Agrega cualquier texto y un botón opcional de cerrar dentro de la clase <code>.alert</code>, después agrega una de las clases contextuales (ej. <code>.alert-success</code>).</p>
+              <div class="example">
+                <div class="alert alert-success">
+                  <strong>¡Felicidades!</strong>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </div>
+                <div class="alert alert-info">
+                  <strong>¡Sugerencia!</strong>
+                  Nullam eros mi, mollis in sollicitudin non, tincidunt sed enim.
+                </div>
+                <div class="alert alert-warning">
+                  <strong>¡Precaución!</strong>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor.
+                </div>
+                <div class="alert alert-danger">
+                  <strong>¡Error de registro!</strong>
+                  Vestibulum eget felis nec purus commodo convallis. Aliquam erat volutpat.
+                </div>
+              </div>
+
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-success"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-info"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-warning"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-danger"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+              <h3 class="top-buffer">Ejemplo de alerta con botón de cerrar</h3>
+              <div class="example">
+                <div class="alert alert-warning alert-dismissible">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <strong>¡Precaución!</strong>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </div>
+              </div>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"alert alert-warning alert-dismissible"<span class="nt">&gt;</span>
+  <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"close"</span> <span class="na">data-dismiss=</span><span class="s">"alert"</span> <span class="na">aria-label=</span><span class="s">"Close"</span><span class="nt">&gt;&lt;span</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="ni">&amp;times;</span><span class="nt">&lt;/span&gt;&lt;/button&gt;</span>
+  <span class="nt">&lt;strong&gt;</span>¡Precaución!<span class="nt">&lt;/strong&gt;</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+              <h2 id="breadcrumbs" class="top-buffer">Breadcrumbs</h2>
+              <hr class="red">
+              <p>Indican la ubicación de la página actual dentro de una jerarquía de navegación.</p>
+              <div class="example">
+                <ol class="breadcrumb">
+                  <li><a href="#"><i class="icon icon-home"></i></a></li>
+                  <li><a href="#">Inicio</a></li>
+                  <li class="active">Archivo</li>
+                </ol>
+              </div>
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;ol</span> <span class="na">class=</span><span class="s">"breadcrumb"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>&lt;i <span class="na">class=</span><span class="s">"icon icon-home"</span><span class="nt">&gt;</span><span class="nt">&lt;/i&gt;</span><span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">"#"</span><span class="nt">&gt;</span>Inicio<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;</span>Archivo<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ol&gt;</span></code></pre></div>
+
+
+              <h2 class="top-buffer" id="tooltips">Tooltips</h2>
+              <hr class="red">
+              <p>Información contextualizada.</p>
+
+              <div class="example">
+                <p>
+                  Lorem ipsum dolor sit adipisicing elit,
+                  <strong data-toggle="tooltip" title="" data-original-title="Tooltip superior">consectetur</strong>
+                  adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation laboris nisi ut aliquip ex ea commodo pariatur.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  <strong data-placement="bottom" data-toggle="tooltip" title="" data-original-title="Tooltip inferior">exercitation</strong>
+                  ullamco laboris nisi ut aliquip ex ea commodo pariatur.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, enim ad minim veniam, quis nostrud
+                  <strong data-placement="left" data-toggle="tooltip" title="" data-original-title="Tooltip izquierdo">consectetur</strong>
+                  ullamco laboris nisi ut aliquip.
+                </p>
+                <ul>
+                  <li>Tiam feugiat dolor elit suscipit elementum orci fringilla.</li>
+                  <li>Integer elementum massa at nulla placerat varius. massa.</li>
+                  <li>
+                    <strong data-placement="right" data-toggle="tooltip" title="" data-original-title="Tooltip derecho">Morbi ltiam</strong>
+                    feugiat suscipit in elementum orci fringilla.
+                  </li>
+                  <li>Praesent tempus draesent tempus dictum nibh ac ullamcorper.</li>
+                  <li>Vivamus et volutpat mi. Donec nec est eget dolor.</li>
+                </ul>
+              </div>
+
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-toggle=</span><span class="s">"tooltip"</span> <span class="na">data-placement=</span><span class="s">"left"</span> <span class="na">title=</span><span class="s">"Tooltip en la izquierda"</span><span class="nt">&gt;</span>Tooltip en la izquierda<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-toggle=</span><span class="s">"tooltip"</span> <span class="na">data-placement=</span><span class="s">"top"</span> <span class="na">title=</span><span class="s">"Tooltip arriba"</span><span class="nt">&gt;</span>Tooltip arriba<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-toggle=</span><span class="s">"tooltip"</span> <span class="na">data-placement=</span><span class="s">"bottom"</span> <span class="na">title=</span><span class="s">"Tooltip abajo"</span><span class="nt">&gt;</span>Tooltip abajo<span class="nt">&lt;/button&gt;</span>
+
+<span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-toggle=</span><span class="s">"tooltip"</span> <span class="na">data-placement=</span><span class="s">"right"</span> <span class="na">title=</span><span class="s">"Tooltip a la derecha"</span><span class="nt">&gt;</span>Tooltip a la derecha<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+            <div class="gobmx-callout gobmx-callout-warning bottom-buffer">
+              <h5>Por razones de rendimiento, el tooltip se deberá inicializar manualmente:</h5>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nx">$gmx</span><span class="p">(</span><span class="kd">document).ready</span><span class="p">(function()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'[data-toggle="tooltip"]'</span><span class="p">).</span><span class="nx">tooltip</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+            </div>
+
+
+              <h2 class="top-buffer" id="paneles-colapsables">Paneles colapsables</h2>
+              <hr class="red">
+              <p>Paneles colapsables para mostrar/ocultar bloques de forma simultánea.</p>
+
+              <div class="example">
+                <div class="panel-group ficha-collapse" id="accordion">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                  <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#panel-01">
+                      Título de bloque 1
+                    </a>
+                  </h4>
+                  <button type="button" class="collpase-button collapsed" data-toggle="collapse" data-parent="#resolution" href="#panel-01" aria-expanded="true" aria-controls="panel-01"></button>
+                </div>
+                    <div class="panel-collapse collapse" id="panel-01" style="height: 0px;">
+                      <div class="panel-body">
+                        <p>Lorem ipsum dolor sit amet de. Nulla vitae elit libero, avehicula  pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-group ficha-collapse"</span> <span class="na">id=</span><span class="s">"accordion"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel panel-default"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-heading"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"panel-title"&gt;
+        <span class="nt">&lt;a</span> </span><span class="na">data-parent=</span><span class="s">"#accordion"</span> <span class="na">data-toggle=</span><span class="s">"collapse"</span> <span class="na">href=</span><span class="s">"#panel-01"</span> <span class="na">aria-expanded=</span><span class="s">"true"</span> <span class="na">aria-controls=</span><span class="s">"panel-01"</span><span class="nt">&gt;</span>
+        Título del bloque 1
+        <span class="nt">&lt;/a&gt;</span>
+      <span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"collpase-button collapsed"</span> <span class="na">data-parent=</span><span class="s">"#accordion"</span> <span class="na">data-toggle=</span><span class="s">"collapse"</span> <span class="na">href=</span><span class="s">"#panel-01"</span><span class="nt">&gt;</span><span class="nt">&lt;/button&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-collapse collapse in"</span> <span class="na">id=</span><span class="s">"panel-01"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"panel-body"</span><span class="nt">&gt;</span>
+        Lorem ipsum dolor sit amet de. Nulla vitae elit libero, avehicula  pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+
+<div class="panel-group ficha-collapse" id="accordion2">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-parent="#accordion2" data-toggle="collapse" href="#panel-02" aria-expanded="true" aria-controls="panel-02">
+        Título del bloque 1
+        </a>
+      </h4>
+      <button type="button" class="collpase-button collapsed" data-parent="#accordion2" data-toggle="collapse" href="#panel-02"></button>
+    </div>
+    <div class="panel-collapse collapse " id="panel-02">
+      <div class="panel-body">
+        Lorem ipsum dolor sit amet de. Nulla vitae elit libero, avehicula  pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+              <h2 class="top-buffer" id="tabs">Pestañas (tabs)</h2>
+              <hr class="red">
+              <p>Permiten mostrar diferentes tipos de contenido dependiendo de la pestaña seleccionada.</p>
+              <div class="example">
+                <ul class="nav nav-tabs">
+                  <li class="">
+                    <a data-toggle="tab" href="#tab-01">Título 1</a>
+                  </li>
+                  <li class="">
+                    <a data-toggle="tab" href="#tab-02">Título Pestaña 2</a>
+                  </li>
+                  <li class="">
+                    <a data-toggle="tab" href="#tab-03">Título 3</a>
+                  </li>
+                  <li class="active">
+                    <a data-toggle="tab" href="#tab-04">Título 4</a>
+                  </li>
+                </ul>
+                <div class="tab-content">
+                  <div class="tab-pane" id="tab-01">
+                    <p>Fusce ut neque justo, et aliquet enim. In hac habitasse dictumst. Nullam commodo que erat, vitae facilisis erat. Cras at mauris ut tortor vestibulum fringilla vel sed metus. Donec interdum purus a justo feugiat rutrum. Sed ac neque ut neque dictum accumsan. Cras lacinia rutrum risus, id viverra metus dictum sit amet. Fusce venenatis, urna eget cursus placerat, dui nisl fringilla purus, nec tincidunt sapien justo ut nisl. Curabitur lobortis semper neque et varius. Etiam eget lectus risus, a varius orci. Nam placerat mauris at dolor imperdiet at aliquet lectus ultricies. Duis tincidunt mi at quam condimentum lobortis.</p>
+                  </div>
+                  <div class="tab-pane" id="tab-02">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc id neque nec enim ultricies congue quis a lectus. Nulla placerat pellentesque enim eu pharetra. Nullam ornare velit vel est porttitor convallis. Nullam lobortis erat a iaculis vulputate. Vivamus vel nibh nec metus aliquam placerat in et magna. Donec ornare, metus vel ultricies porta, nisl sem vulputate sapien, sed ullamcorper purus nisi at quam. Duis sollicitudin pharetra condimentum. Mauris enim felis, placerat ac luctus id, sagittis id mauris. In varius rutrum arcu, vitae tristique urna ultrices nec. Maecenas purus turpis, congue in consequat elementum, rutrum id purus. Donec quis arcu ultricies erat viverra pretium eleifend dignissim urna.</p>
+                  </div>
+                  <div class="tab-pane" id="tab-03">
+                    <p>Fusce ultrices dapibus risus, ac pellentesque sem pretium vel. Phasellus laoreet egestas lectus, nec fringilla elit sollicitudin et. Nam lectus purus, interdum et fringilla vitae, luctus vitae arcu. Praesent interdum, purus quis vehicula ultricies, odio libero imperdiet neque, eu dignissim nibh urna at tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas sed posuere arcu. Maecenas fringilla nisi et pharetra iaculis. Nam neque tortor, egestas eget nunc ac, tempus facilisis justo. Ut et tempus dui.</p>
+                    <ul>
+                      <li>Pellentesque ultrices eros ac scelerisque pharetra.</li>
+                      <li>Donec tincidunt condimentum felis. Vestibulum vehicula vulputate magna nec fermentum.</li>
+                      <li>Cras ornare nulla eros, nec scelerisque augue faucibus et.</li>
+                    </ul>
+                    <p>Aenean euismod, eros dignissim interdum venenatis, elit neque sodales ligula, sed pretium ante velit pulvinar risus. Vestibulum at sem rhoncus turpis vestibulum ullamcorper et ut erat. Vivamus sit amet consectetur velit, eget pretium nibh.</p>
+                  </div>
+                  <div class="tab-pane active" id="tab-04">
+                    <p>Maecenas eu placerat ante. Fusce ut neque justo, et aliquet enim. In hac habitasse dictumst. Nullam commodo que erat, vitae facilisis erat. Cras at mauris ut tortor vestibulum fringilla vel sed metus. Donec interdum purus a justo feugiat rutrum. Sed ac neque ut neque dictum accumsan. Cras lacinia rutrum risus, id viverra metus dictum sit amet. Fusce venenatis, urna eget cursus placerat, dui nisl fringilla purus, nec tincidunt sapien justo ut nisl. Curabitur lobortis semper neque et varius. Etiam eget lectus risus, a varius orci. Nam placerat mauris at dolor imperdiet at aliquet lectus ultricies. Duis tincidunt mi at quam condimentum lobortis.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="highlight"><pre><code class="html"><span class="nt">&lt;ul</span> <span class="na">class=</span><span class="s">"nav nav-tabs"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;li</span> <span class="na">class=</span><span class="s">"active"</span><span class="nt">&gt;&lt;a</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#tab-01"</span><span class="nt">&gt;</span>Título 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+  <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">data-toggle=</span><span class="s">"tab"</span> <span class="na">href=</span><span class="s">"#tab-04"</span><span class="nt">&gt;</span>Título 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-content"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane active"</span> <span class="na">id=</span><span class="s">"tab-01"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"tab-pane"</span> <span class="na">id=</span><span class="s">"tab-04"</span><span class="nt">&gt;</span>...<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+
+
+              <h2 class="top-buffer" id="modals">Ventanas modales</h2>
+              <hr class="red">
+              <p>Las ventanas modales son indicaciones de diálogo flexibles y dinámicas que permiten mostrar información sobre toda las demás ventanas de la misma aplicación.</p>
+
+              <div class="example example-modal">
+                <!-- Modal -->
+                <div class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Ejemplo de ventana modal</h4>
+                      </div>
+                      <div class="modal-body">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consectetur libero id gravida volutpat. Nunc mauris lorem, sodales eu suscipit id, fermentum vitae neque.
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Guardar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal fade"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-dialog"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-content"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-header"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h4</span> <span class="na">class=</span><span class="s">"modal-title"</span><span class="nt">&gt;</span>Ejemplo de ventana modal<span class="nt">&lt;/h4&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-body"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;p&gt;</span>Ejemplo de texto interno.</span><span class="nt">&lt;/p&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"modal-footer"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-default"</span> <span class="na">data-dismiss=</span><span class="s">"modal"</span><span class="nt">&gt;</span>Cerrar<span class="nt">&lt;/button&gt;</span>
+        <span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">class=</span><span class="s">"btn btn-primary"</span><span class="nt">&gt;</span>Guardar<span class="nt">&lt;/button&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal-content --&gt;</span>
+  <span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal-dialog --&gt;</span>
+<span class="nt">&lt;/div&gt;</span><span class="c">&lt;!-- /.modal --&gt;</span></code></pre></div>
+
+              <h3>Modo de uso</h3>
+              <h4>Mediante data-attributes</h4>
+              <p>Se pueden activar ventanas modales sin tener que escribir una línea individual de javascript mediante etiquetas. Se debe establecer <code>data-toggle="modal"</code> en un elemento controlador, como botón, así como <code>data-target="#foo"</code> o <code>href="#foo"</code> para apuntar a un modal en específico para alternar.</p>
+
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;button</span> <span class="na">type=</span><span class="s">"button"</span> <span class="na">data-toggle=</span><span class="s">"modal"</span> <span class="na">data-target=</span><span class="s">"#foo"</span><span class="nt">&gt;</span>Abrir ventana modal<span class="nt">&lt;/button&gt;</span></code></pre></div>
+
+              <h4 class="top-buffer">Mediante Javascript</h4>
+              <p>El siguiente ejemplo llamará a una ventana modal con un id de <code>myModal</code> con la siguiente línea de Javascript.</p>
+              <div class="highlight"><pre><code class="language-js" data-lang="js"><span class="nx">$</span><span class="p">(</span><span class="s1">'#myModal'</span><span class="p">).</span><span class="nx">modal</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span></code></pre></div>
+
+              <p>Para más información leer la siguiente documentación: <a href="http://getbootstrap.com/javascript/#modals" target="_blank">Bootstrap Javascript modals</a>.</p>
+
+
+              <h2 class="top-buffer" id="datepicker">Selector de fechas (datepicker)</h2>
+              <hr class="red">
+              <p>El selector de fechas (Datepicker) nos proporciona un calendario personalizable, en el cual podremos realizar selecciones de fechas y asociarlo a elementos HTML.</p>
+
+              <div class="example">
+                <div class="datepicker-example"></div>
+              </div>
+
+              <h3>Modo de uso</h3>
+              <p> Para el funcionamiento correcto de este plugin se deberá agregar la siguiente ruta de script después del script de gobmx.js: </p>
+              <strong>Ambiente producción</strong><br>
+              <code class="small">https://framework-gb.cdn.gob.mx/assets/scripts/jquery-ui-datepicker.js</code><br>
+              <strong>Ambiente de producción con certificado SSL</strong><br>
+              <code class="small">https://framework-gb.cdn.gob.mx/assets/scripts/jquery-ui-datepicker.js</code>
+
+              <h4 class="top-buffer">Importante</h4>
+              <p>En caso de hacer uso de este plugin se deberá <strong>incluir de manera manual</strong> dentro del documento el script de <code>jQuery 1.9.0</code> o mayor para que exista un correcto funcionamiento del mismo.</p>
+
+              <!-- ejemplo básico -->
+              <h4 class="top-buffer">Selector de fechas básico</h4>
+              <div class="example">
+                <div class="form-group datepicker-group ">
+                  <label class="control-label" for="calendar">Ejemplo de selector de fechas dentro de un campo</label>
+                  <input type="text" class="form-control" id="calendar">
+                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <h6>HTML:</h6>
+              <div class="highlight"><pre><code class="html"><span class="nt">...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group datepicker-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"calendar"</span><span class="nt">&gt;</span>Calendario:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"calendar"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-calendar"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+...</code></pre></div>
+
+              <h6>Javascript:</h6>
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nx">$gmx</span><span class="p">(</span><span class="kd">document).ready</span><span class="p">(function()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#calendar'</span><span class="p">).</span><span class="nx">datepicker</span><span class="p">();</span>
+<span class="p">});</span>
+</code></pre></div>
+              <!--end ejemplo básico -->
+
+              <!-- ejemplo con selector de año -->
+              <h4 class="top-buffer">Selector de fechas con selección de año</h4>
+              <div class="example">
+                <div class="form-group datepicker-group ">
+                  <label class="control-label" for="calendarYear">Ejemplo de selector de fechas dentro de un campo</label>
+                  <input type="text" class="form-control" id="calendarYear">
+                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <h6>HTML:</h6>
+              <div class="highlight"><pre><code class="html"><span class="nt">...
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"form-group datepicker-group"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;label</span> <span class="na">class=</span><span class="s">"control-label"</span> <span class="na">for=</span><span class="s">"calendarYear"</span><span class="nt">&gt;</span>Calendario:<span class="nt">&lt;/label&gt;</span>
+    <span class="nt">&lt;input</span> <span class="na">class=</span><span class="s">"form-control"</span> <span class="na">id=</span><span class="s">"calendarYear"</span> <span class="na">type=</span><span class="s">"text"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-calendar"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;</span><span class="nt">&lt;/span&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+...</code></pre></div>
+
+              <h6>Javascript:</h6>
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nx">$gmx</span><span class="p">(</span><span class="kd">document).ready</span><span class="p">(function()</span> <span class="p">{</span>
+  <span class="nx">$</span><span class="p">(</span><span class="s1">'#calendarYear'</span><span class="p">).</span><span class="nx">datepicker</span><span class="p">({changeYear: true});</span>
+<span class="p">});</span>
+</code></pre></div>
+              <!-- end ejemplo con selector de año -->
+
+              <p>Para más información leer la siguiente documentación: <a href="http://jqueryui.com/datepicker/" target="_blank">jQuery Datepicker</a>.</p>
+
+
+
+              <h2 id="iconos" class="top-buffer">Íconos</h2>
+              <hr class="red">
+              <h3 class="top-buffer">Íconos especiales para gob.mx</h3>
+              <p>Íconos creados para específicamente para gob.mx los cuales tendrán una mayor prioridad en cuanto a los demás íconos.</p>
+              <div class="bs-glyphicons">
+                <ul class="bs-glyphicons-list">
+                  <li>
+                    <span class="gobmxfont icon-home" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-home</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-search" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-search</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-user" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-user</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-calendar" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-calendar</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-infocircle" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-infocircle</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-world" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-world</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-phone" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-phone</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-tramite" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-tramite</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-others" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-others</span>
+                  </li>
+
+                  <li>
+                    <span class="gobmxfont icon-caret-right" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-caret-right</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-caret-down" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-caret-down</span>
+                  </li>
+
+                  <li>
+                    <span class="gobmxfont icon-arrow" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-arrow</span>
+                  </li>
+                  <li>
+                    <span class="gobmxfont icon-printing" aria-hidden="true"></span>
+                    <span class="glyphicon-class">icon-printing</span>
+                  </li>
+
+                </ul>
+              </div>
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"icon-home"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
+
+
+              <h3 class="top-buffer">Glyphicons</h3>
+              <p>Incluye 200 íconos en formato de fuente del conjunto Glyphicon.</p>
+              <p>Por motivos de rendimiento, todos los íconos requieren una clase base y clase ícono individual. Para utilizarlo, coloque el código siguiente prácticamente en cualquier lugar.</p>
+              <div class="bs-glyphicons">
+                <ul class="bs-glyphicons-list">
+
+                    <li>
+                      <span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-asterisk</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-plus</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-euro</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-minus</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-cloud</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-envelope</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-pencil</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-glass" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-glass</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-music</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-search</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-heart</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-star</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-star-empty</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-user</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-film" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-film</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-th-large</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-th</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-th-list</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-ok</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-remove</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-zoom-in</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-zoom-out</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-off</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-signal</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-cog</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-trash</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-home</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-file</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-time</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-road" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-road</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-download-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-download" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-download</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-upload</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-inbox" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-inbox</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-play-circle</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-repeat</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-refresh</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-list-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-lock</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-flag" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-flag</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-headphones" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-headphones</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-volume-off" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-volume-off</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-volume-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-volume-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-volume-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-qrcode" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-qrcode</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-barcode" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-barcode</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tag" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tag</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tags</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-book</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-bookmark</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-print" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-print</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-camera" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-camera</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-font" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-font</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-bold" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-bold</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-italic" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-italic</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-text-height" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-text-height</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-text-width" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-text-width</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-align-left</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-align-center" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-align-center</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-align-right" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-align-right</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-align-justify" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-align-justify</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-list</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-indent-left" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-indent-left</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-indent-right</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-facetime-video</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-picture" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-picture</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-map-marker</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-adjust" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-adjust</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tint" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tint</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-edit</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-share" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-share</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-check</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-move" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-move</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-step-backward" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-step-backward</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-fast-backward" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-fast-backward</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-backward" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-backward</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-play</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-pause" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-pause</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-stop</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-forward</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-fast-forward</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-step-forward" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-step-forward</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-eject" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-eject</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-chevron-left</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-chevron-right</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-plus-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-minus-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-remove-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-ok-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-question-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-info-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-screenshot" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-screenshot</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-remove-circle</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-ok-circle</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-ban-circle</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-arrow-left</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-arrow-right</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-arrow-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-arrow-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-share-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-resize-full" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-resize-full</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-resize-small" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-resize-small</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-exclamation-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-gift" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-gift</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-leaf</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-fire</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-eye-open</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-eye-close</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-warning-sign</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-plane" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-plane</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-calendar</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-random</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-comment</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-magnet" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-magnet</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-chevron-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-chevron-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-retweet" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-retweet</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-shopping-cart</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-folder-close</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-folder-open</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-resize-vertical" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-resize-vertical</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-resize-horizontal" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-resize-horizontal</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-hdd</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-bullhorn</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-bell</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-certificate" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-certificate</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-thumbs-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-thumbs-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-hand-right</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-hand-left" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-hand-left</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-hand-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-hand-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-hand-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-circle-arrow-right" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-right</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-circle-arrow-left" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-left</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-circle-arrow-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-circle-arrow-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-circle-arrow-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-globe</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-wrench</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tasks</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-filter</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-briefcase</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-fullscreen</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-dashboard" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-dashboard</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-paperclip</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-heart-empty</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-link" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-link</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-phone</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-pushpin</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-usd</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-gbp" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-gbp</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort-by-alphabet" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort-by-alphabet</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort-by-alphabet-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort-by-alphabet-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort-by-order" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort-by-order</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort-by-order-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort-by-order-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort-by-attributes" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort-by-attributes</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sort-by-attributes-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-unchecked</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-expand" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-expand</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-collapse-down" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-collapse-down</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-collapse-up" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-collapse-up</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-log-in</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-flash" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-flash</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-log-out</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-new-window</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-record" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-record</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-save</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-open" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-open</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-saved" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-saved</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-import" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-import</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-export" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-export</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-send" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-send</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-floppy-disk</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-floppy-saved</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-floppy-remove" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-floppy-remove</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-floppy-save</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-floppy-open" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-floppy-open</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-credit-card</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-transfer" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-transfer</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-cutlery</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-header" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-header</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-compressed</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-earphone</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-phone-alt</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tower" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tower</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-stats</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sd-video" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sd-video</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-hd-video" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-hd-video</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-subtitles" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-subtitles</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sound-stereo" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sound-stereo</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sound-dolby" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sound-dolby</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sound-5-1" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sound-5-1</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sound-6-1" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sound-6-1</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-sound-7-1" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-sound-7-1</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-copyright-mark</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-registration-mark</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-cloud-download</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-cloud-upload" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-cloud-upload</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tree-conifer</span>
+                    </li>
+
+                    <li>
+                      <span class="glyphicon glyphicon-tree-deciduous" aria-hidden="true"></span>
+                      <span class="glyphicon-class">glyphicon glyphicon-tree-deciduous</span>
+                    </li>
+                </ul>
+              </div>
+              <div class="highlight"><pre><code class="language-html" data-lang="error-403.html"><span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"glyphicon glyphicon-search"</span> <span class="na">aria-hidden=</span><span class="s">"true"</span><span class="nt">&gt;&lt;/span&gt;</span></code></pre></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <h2 id="iframes" class="top-buffer">Iframes</h2>
+            <hr class="red">
+            <p>Los iframes deberán utilizarse únicamente en caso de ser necesario.</p>
+
+            <h4>Ejemplo básico</h4>
+            <div class="example">
+             <iframe frameborder="0" width="100%" height="430" src="https://citas.sat.gob.mx/citasat/agregarcita.aspx"></iframe>
+            </div>
+
+
+            <div class="highlight"><pre><code class="html"><span class="nt">&lt;iframe</span> <span class="na">frameborder=</span><span class="s">"0"</span> <span class="na">height=</span><span class="s">"430"</span> <span class="na">src=</span><span class="s">"http://portaltransparencia.gob.mx/"</span> <span class="na">width=</span><span class="s">"100%"</span><span class="nt">&gt;&lt;/iframe&gt;</span></code></pre></div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8">
+            <h2 id="clases" class="top-buffer">Clases de ayuda</h2>
+            <hr class="red">
+            <p>Existen 3 clases de ayuda que servirán para dar un margen de 64px ya sea superior, inferior o ambos.</p>
+            <dl class="dl-horizontal">
+              <dt>margen superior:</dt>
+              <dd><code>.top-buffer</code></dd>
+              <dt>margen inferior:</dt>
+              <dd><code>.bottom-buffer</code></dd>
+              <dt>margen vertical:</dt>
+              <dd><code>.vertical-buffer</code></dd>
+            </dl>
+            <!-- <strong data-toggle="tooltip" data-placement="left" title="Tooltip on left">consectetur</strong> -->
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/qa/gobmx.js"></script>
+    <script src="https://framework-gb.cdn.gob.mx/assets/scripts/jquery-ui-datepicker.js"></script>
+
+    <script type="text/javascript">
+      $gmx(document).ready(function(){
+        $.datepicker.regional.es = {
+          closeText: 'Cerrar',
+          prevText: 'Ant',
+          nextText: 'Sig',
+          currentText: 'Hoy',
+          monthNames: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'],
+          monthNamesShort: ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+          dayNames: ['Domingo','Lunes','Martes','Mi&eacute;rcoles','Jueves','Viernes','S&aacute;bado'],
+          dayNamesShort: ['Dom','Lun','Mar','Mi&eacute;','Juv','Vie','S&aacute;b'],
+          dayNamesMin: ['Dom','Lun','Mar','Mie','Jue','Vie','S&aacute;b'],
+          weekHeader: 'Sm',
+          dateFormat: 'dd/mm/yy',
+          firstDay: 1,
+          isRTL: false,
+          showMonthAfterYear: false,
+          yearSuffix: ''};
+        $.datepicker.setDefaults($.datepicker.regional.es);
+        $( "#calendar" ).datepicker();
+        $( "#calendarYear" ).datepicker( { changeYear: true } );
+        $( ".datepicker-example" ).datepicker();
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+</body>
+</html>
