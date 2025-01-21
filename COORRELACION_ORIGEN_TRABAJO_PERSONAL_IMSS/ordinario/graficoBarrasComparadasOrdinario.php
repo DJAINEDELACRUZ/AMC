@@ -47,7 +47,7 @@ $resultados3 = $stmt->fetchAll();
             </div>
             <hr class="red">
             <div class="row">
-                <div class="col-md-3"></div>
+                <div class="col-md-3"><a class="btn btn-primary btn-sm btn-block" href="vacantes/consultaVacantes.php">Plazas Vacantes</a></div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"></div>
                 <div class="col-md-3"><button class="btn btn-success btn-sm btn-block" onclick="window.print()">Imprimir esta página</button></div>

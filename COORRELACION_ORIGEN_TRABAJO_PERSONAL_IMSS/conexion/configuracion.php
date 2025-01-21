@@ -11,4 +11,9 @@ $configuraciones = [
         'usuario' => '**',
         'contraseña' => '**********',
     ],
+    'vacantes' => [
+        'dsn' => 'mysql:dbname=procesado;host=localhost',
+        'usuario' => 'root',
+        'contraseña' => '',
+    ],
 ];
