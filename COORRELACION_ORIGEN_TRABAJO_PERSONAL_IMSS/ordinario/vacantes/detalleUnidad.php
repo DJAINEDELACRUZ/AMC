@@ -2,21 +2,32 @@
 require_once '../../conexion/conexion.php';
 
 // Obtener conexión
-$conexion = obtenerConexionVacantes();
+$conexion = obtenerConexion();
 
-// Obtener el NUMDEL desde la URL
+// Obtener parámetros desde la URL
 $numdel = isset($_GET['numdel']) ? $_GET['numdel'] : null;
+$cveuni = isset($_GET['cveuni']) ? $_GET['cveuni'] : null;
 
-// Validar NUMDEL
-if (!$numdel) {
-    echo "No se proporcionó una delegación válida.";
+// Validar los parámetros
+if (!$numdel || !$cveuni) {
+    echo "No se proporcionaron los datos necesarios.";
     exit;
 }
 
-// Obtener las plazas vacantes según NUMDEL
-$query = "SELECT * FROM procesado.plazas_vacantes_por_unidadmedica WHERE NUMDEL = :numdel";
+// Obtener las vacantes por categoría según unidad médica
+$query = "SELECT 
+                NUMDEL,
+                DELEGACION,
+                DEPENDENCIA AS UNIDAD_MEDICA,
+                CATEGORIA
+            FROM personalaps.plantillaordinario
+            WHERE PLZVAC = 1 
+            AND DESCRIP_CLASCATEG = '1.MÉDICOS' 
+            AND NUMDEL = :numdel 
+            AND DEPENDENCIA = :cveuni;";
 $stmt = $conexion->prepare($query);
 $stmt->bindParam(':numdel', $numdel, PDO::PARAM_INT);
+$stmt->bindParam(':cveuni', $cveuni, PDO::PARAM_STR);
 $stmt->execute();
 $resultados = $stmt->fetchAll();
 ?>
@@ -26,7 +37,7 @@ $resultados = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de Plazas Vacantes</title>
+    <title>Detalle de Vacantes por Categoría</title>
     <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
     <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
         <div class="container">
@@ -63,27 +74,27 @@ $resultados = $stmt->fetchAll();
             <hr>
             <br>
             <h3>Área de Medicina Computacional <button class="btn btn-success btn-sm" onclick="window.print()">Imprimir esta página</button></h3>
+            <h4>Unidad Médica: <?php echo htmlspecialchars($cveuni); ?></h4>
             <h4>Delegación: <?php echo htmlspecialchars($numdel); ?></h4>
             <hr class="red">
 
-            <!-- Tabla de Vacantes -->
-            <p>DETALLE DE VACANTES POR UNIDAD MÉDICA</p>
+            <p>DETALLE DE VACANTES POR CATEGORÍA</p>
             <table class="table table-bordered table-striped table-hover table-sm">
                 <thead>
                     <tr>
-                        <th>CLAVE</th>
+                        <th>ID DELEGACION</th>
                         <th>DELEGACION</th>
                         <th>UNIDAD MEDICA</th>
-                        <th>VACANTES</th>
+                        <th>CATEGORÍA</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($resultados as $value): ?>
-                    <tr onclick="window.location.href='detalleUnidad.php?numdel=<?php echo $value['NUMDEL']; ?>&cveuni=<?php echo $value['UNIDAD_MEDICA']; ?>'" style="cursor: pointer;">
+                    <tr>
                         <td><?php echo htmlspecialchars($value["NUMDEL"]); ?></td>
                         <td><?php echo htmlspecialchars($value["DELEGACION"]); ?></td>
                         <td><?php echo htmlspecialchars($value["UNIDAD_MEDICA"]); ?></td>
-                        <td class="text-center"><?php echo htmlspecialchars($value["VACANTES"]); ?></td>
+                        <td class="text-center"><?php echo htmlspecialchars($value["CATEGORIA"]); ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </tbody>

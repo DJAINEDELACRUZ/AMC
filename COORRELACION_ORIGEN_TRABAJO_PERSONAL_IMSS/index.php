@@ -38,6 +38,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <a href="ordinario/graficoBarrasComparadasOrdinario.php" class="btn btn-primary btn-block">ORDINARIO</a>
+                    <a href="ajustarBase.php">Actualizar Base</a>
                 </div>
             </div>
             <hr>
