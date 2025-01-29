@@ -2,7 +2,7 @@
 require_once '../../conexion/conexion.php';
 
 // Obtener conexión
-$conexion = obtenerConexion('default');
+$conexion = obtenerConexionARSA('servidor_secundario');
 
 // Ejecutar la consulta
 $query = "
@@ -13,7 +13,7 @@ $query = "
         COUNT(*) AS total,
         ROUND(SUM(CASE WHEN SEXO = 'H' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS porcentaje_hombres,
         ROUND(SUM(CASE WHEN SEXO = 'M' THEN 1 ELSE 0 END) * 100.0 / COUNT(*), 2) AS porcentaje_mujeres
-    FROM personalaps.plantillaordinario
+    FROM amc.plantillaordinario
     WHERE DESCRIP_CLASCATEG = '1.MÉDICOS'
     GROUP BY NOMBREAR
     ORDER BY NOMBREAR;

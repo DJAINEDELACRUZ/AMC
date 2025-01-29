@@ -213,10 +213,10 @@ $tablaDistribucion = $resultado->fetchAll();
                         </tfoot>
                     </table>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <canvas id="graficaPastel" width="300" height="300"></canvas>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <hr class="red">
                     <p>PLAZAS VACANTES TOTALES POR OOAD</p>
                     <table id="tablaEstado" class="table table-bordered table-striped table-hover table-sm">
