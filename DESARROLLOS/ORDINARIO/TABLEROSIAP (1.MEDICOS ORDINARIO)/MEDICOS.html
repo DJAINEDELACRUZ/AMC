@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retorno al origen</title>
+
+    <!-- 📌 Framework del gobierno de México -->
+    <link href="https://framework-gb.cdn.gob.mx/assets/styles/main.css" rel="stylesheet">
+
+    <!-- 📌 DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+    <!-- 📌 Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- 📌 Estilos personalizados -->
+    <style>
+        /* 🎨 Estilos para heatmap en la tabla */
+        .heatmap {
+            font-weight: bold;
+            padding: 10px;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+        }
+
+        /* 🎨 Estilos para badges */
+        .badge {
+            padding: 5px 10px;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        .badge-danger { background-color: #dc3545; color: white; }
+        .badge-warning { background-color: #ffc107; color: black; }
+        .badge-success { background-color: #28a745; color: white; }
+    </style>
+    <style>
+        #tablaEstado tbody tr {
+            cursor: pointer;
+        }
+    </style>
+    <style>
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Posición del tooltip arriba del icono */
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <!-- 📌 CSS para construccion de SIDEBAR -->
+    <style>
+        /* Sidebar mejorado */
+        .sidebar {
+            position: fixed;
+            top: 120px; /* Espacio para el menú superior */
+            left: 0;
+            width: 250px;
+            height: calc(100vh - 120px);
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-right: 2px solid #ddd;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+        /* Estilo de los enlaces del menú */
+        .sidebar .nav-link {
+            color: #000000;
+            font-size: 1.1rem; /* Aumentado */
+            /*font-weight: bold;*/ /* Negritas */
+            padding: 12px 10px; /* Más espacio */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+            text-decoration: none !important; /* Quita el subrayado */
+            cursor: pointer; /* Hace que aparezca la manita */
+        }
+
+        /* Íconos del menú */
+        .sidebar .nav-link i {
+            font-size: 1.2rem; /* Aumentado */
+            color: #a57f2c;
+        }
+
+        /* Efecto hover */
+        .sidebar .nav-link:hover {
+            background-color: #DDC9A3;
+            color: #00543D;
+        }
+
+       /* Sección activa */
+        .sidebar .nav-link.active {
+            background-color: #DDC9A3;
+            color: #00543D;
+            font-weight: bold;
+        }
+
+        /* Espaciado del contenido principal */
+        main {
+            margin-left: 270px; /* Espacio para el sidebar */
+            padding: 40px 20px;
+            min-height: calc(100vh - 200px); /* Ajusta la altura mínima del contenido */
+            padding-bottom: 100px; /* Deja espacio para el footer */
+        }
+
+        /* Desplazamiento suave */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        footer {
+            position: relative; /* Asegura que se posicione de forma natural */
+            width: 100%;
+            background-color: #611232; /* Color de fondo para que no se vea cortado */
+            padding: 20px;
+            margin-top: auto; /* Empuja hacia abajo */
+        }
+
+        html, body {
+            height: 100%;
+        }
+    </style>
+    <!-- 📌 CSS para construccion de mapas de calor-->
+    <style>
+
+        /* 📌 Estilos del Tooltip para AMBOS mapas */
+        .mapael .mapTooltip {
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.85);
+            color: #ffffff;
+            opacity: 0.95;
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            max-width: 250px;
+            display: none;
+            font-size: 14px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Ajuste de la leyenda para que se ubique en la zona del Golfo sin bloquear el mapa */
+        #mapa1 .rightPanel, 
+        #mapa2 .rightPanel {
+            position: absolute;
+            top: 35%;
+            right: 10px;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;  /* Asegura que esté por encima del mapa */
+            pointer-events: auto;  /* Permite la interacción con los botones */
+        }
+
+        /* Asegurar que el mapa siga siendo interactivo */
+        #mapa1 .mapael .map, 
+        #mapa2 .mapael .map {
+            position: relative;
+            z-index: 1;  /* Mantiene el mapa debajo de la leyenda */
+        }
+    </style>
+
+    <!-- 📌 jQuery y DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <!-- 📌 Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- 📌 Polyfill para compatibilidad -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <!-- 📌 Cargar MathJax para fórmulas matemáticas -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            if (window.MathJax) {
+                MathJax.typeset();
+            }
+        });
+    </script>
+
+    <!-- 📌 mapael-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mapael/2.2.0/js/jquery.mapael.min.js"></script>
+
+    <!-- 📌 Carga de archivos externos js para utilidades varias-->
+     <script src="js/total_plz_vac_ocu.js"></script>
+    <script src="js/dona.js"></script>
+    <script src="js/nivel_atencion.js"></script>
+    <script src="js/distribucion_genero_especialidad.js"></script>
+    <script src="js/distribucion_edad.js"></script>
+    <script src="js/tabla_modal.js"></script>
+    <script src="js/categoria.js"></script>
+    <script src="js/distribucion_frecuencias.js"></script>
+    <script src="js/relacion_origen_trabajo.js"></script>
+    <script src="js/mexico.js"></script>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#menu-lateral" data-bs-offset="100" tabindex="0">
+    <nav class="navbar navbar-inverse sub-navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#subenlaces">
+                <span class="sr-only">Interruptor de Navegación</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Unidad de Educación e Investigación</a>
+            </div>
+            <div class="collapse navbar-collapse" id="subenlaces">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../../index.php">Regresar</a></li>
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Desplegable <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Acción</a></li>
+                    <li><a href="#">Otra acción</a></li>
+                    <li><a href="#">Algo más aquí</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">Enlace separado</a></li>
+                </ul>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Sidebar -->
+    <nav id="menu-lateral" class="sidebar">
+        <h5>CONTENIDO</h5>
+        <hr>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion1')">
+                    <i class="fas fa-clipboard-list"></i> INICIO
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion2')">
+                    <i class="fas fa-venus-mars"></i> DISTRIBUCIÓN DEMOGRÁFICA
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion3')">
+                    <i class="fas fa-user-md"></i> DISTRIBUCIÓN POR OOAD
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion4')">
+                    <i class="fas fa-hospital-user"></i> DISTRIBUCIÓN POR NIVEL DE ATENCIÓN
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion5')">
+                    <i class="fa fa-users"></i> DISTRIBUCIÓN POR CATEGORÍA
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion6')">
+                    <i class="fa fa-university"></i> RÉGIMEN DE JUBILACIONES Y PENSIONES
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion7')">
+                    <i class="fa fa-globe"></i> ADSCRIPCIÓN Y ORIGEN
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" onclick="scrollToSection('seccion8')">
+                    <i class="fas fa-chart-bar"></i> PLAZAS CON RESPECTO A DENSIDAD POBLACIONAL
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="container" style="margin-left: 270px; padding-top: 80px;">
+        <section id="seccion1" class="mb-5">
+            <h2>MEDICINA COMPUTACIONAL</h2>
+            <i class="titulo-secundario"><i class="fas fa-chart-line"></i> Análisis de Vacantes y Ocupación del Personal Médico – Quincena 17, SIAP 2024</i>
+            <i>“Solo incluye plantilla ordinario clasificado como <code>‘1.MÉDICOS’</code>”</i>
+            <hr class="red">
+            
+            <p>TOTAL PLAZAS VACANTES Y OCUPACIÓN</p>
+            <table id="tablaMedicos" class="table table table-bordered table-hover table-striped table-sm text-center">
+                <thead>
+                    <tr>
+                        <th>Total de Plazas</th>
+                        <th>Plazas Ocupadas</th>
+                        <th>Plazas Vacantes</th>
+                        <th>Porcentaje Ocupación</th>
+                        <th>Porcentaje Vacantes</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <br>
+        <!--1 GENERO-->
+        <section id="seccion2" class="mb-5">
+            <h3>DISTRIBUCIÓN DEMOGRÁFICA</h3>
+            <hr class="red">
+
+            <div class="row">
+                <!-- grafica de pastel archivo distribucion_genero_especialidad.js-->
+                <div class="col-md-4">
+                    <p class="text-center">DISTRIBUCIÓN POR GÉNERO</p>
+                    <canvas id="graficaPastel" width="300" height="300"></canvas>
+                </div>
+                <!-- grafica de lineas archivo distribucion_edad.js-->
+                <div class="col-md-8">
+                    <p class="text-center">DISTRIBUCIÓN POR GRUPOS DE EDAD Y GÉNERO</p>
+                    <canvas id="graficaMedicos"></canvas>
+                </div>
+
+            </div>
+
+            <br><br>
+            <div class="row">
+                <!--tabla de distribucion de genero por área de responsabilidad-->
+                <div class="col-md-12">
+                    <!-- archivo distribucion_genero_especialidad.js-->
+                    <p>DISTRIBUCIÓN DE GÉNERO POR ÁREA DE RESPONSABILIDAD
+                        <span class="tooltip-container">
+                            <i class="fas fa-info-circle text-primary"></i>
+                            <span class="tooltip-text"><b>El criterio de clasificación por área de responsabilidad se obtiene a partir de la variable NOMBREAR</b></span>
+                        </span>
+                    </p>
+                    <table id="tablaDistribucion" class="table table-bordered table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Área de Responsabilidad</th>
+                                <th>Hombres</th>
+                                <th>Mujeres</th>
+                                <th>Total</th>
+                                <th>H%</th>
+                                <th>M%</th>
+                                <th>Predominancia</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyDistribucion" class="text-center"> <!-- ID ÚNICO AQUÍ -->
+                            <!-- Filas generadas dinámicamente -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Total General</th>
+                                <th id="totalHombres"></th>
+                                <th id="totalMujeres"></th>
+                                <th id="totalGeneral"></th>
+                                <th id="totalHombresPorcentaje"></th>
+                                <th id="totalMujeresPorcentaje"></th>
+                                <th id="predominanciaTotal"></th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+        <!--2 PLAZAS OCUPADAS Y VACANTES TOTALES POR OOAD-->
+        <section id="seccion3" class="mb-5">
+            <h3>DISTRIBUCIÓN POR OOAD</h3>
+            <hr class="red">
+
+            <div class="row">
+                <!--tabla de plazas vacantes por delegacion, estado u OOAD-->
+                <div class="col-md-12">
+                    <!--el query esta en el archivo tabla_modal.js-->
+                    <p>PLAZAS OCUPADAS Y VACANTES TOTALES POR OOAD</p>
+                    <table id="tablaEstado" class="table table-bordered table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Clave Delegación</th>
+                                <th>OOAD</th>
+                                <th>Total Unidades</th>
+                                <th>Plazas Ocupadas</th>
+                                <th>Plazas Vacantes</th>
+                                <th>Porcentaje Ocupación</th>
+                                <th>Porcentaje Vacantes</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyEstado" class="text-center"></tbody> <!-- ID agregado para manipularlo con JavaScript -->
+                    </table>
+
+                    <!--modal detalle ooad-->
+                    <div class="modal fade" id="modalDelegacion" tabindex="-1" role="dialog" aria-labelledby="modalDelegacionLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content text-center">
+                                <div class="modal-header">
+                                    <h5 class="modal-title mx-auto" id="modalDelegacionLabel">Información de la OOAD o Delegación</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <h5 id="modalDelegacionNombre"></h5>
+                                    <p><strong>Total de Vacantes: </strong> <span id="totalVacantes"></span></p>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Categoría</th>
+                                                <th>Descripción</th>
+                                                <th>Vacantes</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="modalDelegacionDatos"></tbody>
+                                    </table>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <br><br>
+            <div class="row">
+                <!--para crear la grafica de barras es con el archivo tabla_modal.js-->
+                <div class="col-md-12">
+                    <canvas id="barChart" width="800" height="400"></canvas>
+                </div> 
+            </div>
+        </section>
+            
+        <br><br>
+        <!--3 NIVEL DE ATENCION-->
+        <section id="seccion4" class="mb-5">
+            <h3>DISTRIBUCIÓN POR NIVEL DE ATENCIÓN</h3>
+            <hr class="red">
+            
+            <div class="row">
+                <!--tabla de plazas ocupadas y vacantes por nivel de atencion-->
+                <div class="col-md-12">
+                    <!-- archivo nivel_atencion.js -->
+                    <p>PLAZAS OCUPADAS Y VACANTES POR NIVEL DE ATENCIÓN</p>
+                    <table id="tablaPlazas" class="table table-bordered table-striped table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Clasificacion de Unidad</th>
+                                <th>Plazas Ocupadas</th>
+                                <th>Plazas Vacantes</th>
+                                <th>Porcentaje Ocupacion</th>
+                                <th>Porcentaje Vacantes</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+        <!--4 VACANTES POR CATEGORÍA-->
+        <section id="seccion5" class="mb-5">
+            <h3>DISTRIBUCIÓN POR CATEGORÍA</h3>
+            <hr class="red">
+
+            <div class="row">
+                <!--tabla de ocupacion por categoría-->
+                <div class="col-md-12">
+                    <p>PLAZAS OCUPADAS Y VACANTES POR CATEGORÍA</p>
+                    <!--archivo categoria.js para arreglo de tabla-->
+                    <table id="tablaOcupacion" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Categoría</th>
+                                <th>Plazas Ocupadas</th>
+                                <th>Plazas Vacantes</th>
+                                <th>Diferencia</th>
+                                <th>Porcentaje Ocupación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Se llenará dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+        <!--5 JUBILACIÓN-->
+        <section id="seccion6" class="mb-5">
+            <h3>RÉGIMEN DE JUBILACIONES Y PENSIONES</h3>
+            <hr class="red">
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <!-- archivo dona.js -->
+                    <p>GRAFICA POR RÉGIMEN DE JUBILACIONES Y PENSIONES</p>
+                    <canvas id="graficaDona1"></canvas>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </section>
+
+        <br><br>
+        <!--6 ADSCRIPCION Y ORIGEN-->
+        <section id="seccion7" class="mb-5">
+            <h3>ADSCRIPCIÓN Y ORIGEN</h3>
+            <hr class="red">
+
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- se construye con distribucion_frecuencias.js-->
+                    <p>DISTRIBUCIÓN DE FRECUENCIAS POR LUGAR DE NACIMIENTO Y TRABAJO</p>
+                    <table class="table table-bordered table-striped table-hover" id="distribucionDeFrecuencias"></table>
+                </div>
+                <div class="col-md-4">
+                    <canvas id="pieChart" width="300" height="300"></canvas>
+                </div>
+            </div>
+
+            <br><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- se construye con relacion_origen_trabajo.js-->
+                    <p>RELACIÓN ORIGEN-TRABAJO: FRECUENCIA Y PORCENTAJE</p>
+                    <table id="tablaOrigenTrabajo" class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>ORIGEN</th>
+                                <th>TOTAL NACIDOS</th>
+                                <th>TRABAJAN EN EL ORIGEN</th>
+                                <th>TRABAJAN FUERA DEL ORIGEN</th>
+                                <th>% TRABAJAN EN EL ORIGEN</th>
+                                <th>% TRABAJAN FUERA DEL ORIGEN</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-center">
+                            <!-- Se llenará dinámicamente con JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-12">
+                    <canvas id="origenTrabajo"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <br><br>
+        <!--7 DENSIDAD POBLACIONAL-->
+        <section id="seccion8" class="mb-5">
+            <h3>PLAZAS CON RESPECTO A DENSIDAD POBLACIONAL</h3>
+            <hr class="red">
+
+            <div class="row">
+                <!--archivo categoria.js tabla de densidad poblacional INEGI contra plazas-->
+                <div class="col-md-12">
+                    <p>ESTADOS CON DÉFICIT EN PLAZAS CON RESPECTO A DENSIDAD POBLACIONAL. <br>
+                    Población con afiliación al servicio de salud por entidad federativa en el Instituto Mexicano de Seguridad Social, 2020. <br>
+                    Instituto Nacional de Estadística y Geografía (<a href="https://www.inegi.org.mx/app/tabulados/interactivos/?pxq=Derechohabiencia_Derechohabiencia_02_822ebcc5-ef41-40c1-9901-22e397025c64" target="_blank">INEGI</a>)</p>
+
+                    <table id="tablaDensidad" class="table table-bordered table-striped table-hover">
+                        <thead class="text-center">
+                            <tr>
+                                <th>OOAD</th>
+                                <th>Derechohabientes</th>
+                                <th>Plazas Ocupadas</th>
+                                <th>Plazas Vacantes</th>
+                                <th>Carga Actual</th>
+                                <th>Carga con Vacantes</th>
+                                <th>Diferencia Absoluta</th>
+                                <th>Índice de Reducción en la Presión (%)
+                                    <i class="fas fa-info-circle text-primary" data-toggle="modal" data-target="#modalIndice" data-toggle="tooltip" title="Ver explicación"></i>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="contenidoTabla"></tbody>
+                    </table>
+                    
+                    <!-- Ventana Modal para Explicación -->
+                    <div class="modal fade" id="modalIndice" tabindex="-1" role="dialog" aria-labelledby="modalIndiceLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content text-center">
+                                <div class="modal-header">
+                                    <h5 class="modal-title mx-auto" id="modalIndiceLabel">Índice de Reducción de Presión en el Sistema</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p><strong>📊 ¿Qué es el Índice Reducción de Presión en el Sistema?</strong></p>
+                                    <p>Este índice nos permite evaluar <code>qué tanto se reduciría la carga de trabajo</code> en el sistema de salud <code>si se ocuparan todas las vacantes disponibles</code>.</p>
+
+                                    <p><strong>📌 ¿Cómo se calcula?</strong></p>
+                                    <p>Se calcula como el porcentaje de reducción en la carga por plaza ocupada si todas las vacantes estuvieran cubiertas:</p>
+                                    
+                                    <div class="alert alert-info font-weight-bold">
+                                        Índice de Presión (%) =
+                                        <br>
+                                        \[
+                                        \left( \frac{\text{Carga actual} - \text{Carga con vacantes}}{\text{Carga actual}} \right) \times 100
+                                        \]
+                                    </div>
+
+                                    <p><strong>📌 Definiciones:</strong></p>
+                                    <ul class="list-unstyled text-left mx-auto" style="max-width: 500px;">
+                                        <li>✔️ <strong>Carga actual:</strong> Número de derechohabientes que cada plaza ocupada atiende.</li>
+                                        <li>✔️ <strong>Carga con vacantes:</strong> Número de derechohabientes por plaza si se cubrieran todas las vacantes.</li>
+                                        <li>✔️ <strong>Índice de presión:</strong> Muestra <code>cuánto disminuiría la carga por plaza ocupada</code> si todas las vacantes estuvieran cubiertas.</li>
+                                    </ul>
+
+                                    <p><strong>📌 Ejemplo de cálculo:</strong></p>
+                                    <div class="alert alert-light font-weight-bold">
+                                        Supongamos que en un Nuevo León tenemos:
+                                        <ul class="list-unstyled">
+                                            <li>📌 <strong>Derechohabientes:</strong> 3,596,116</li>
+                                            <li>📌 <strong>Plazas ocupadas:</strong> 5,038</li>
+                                            <li>📌 <strong>Plazas vacantes:</strong> 245</li>
+                                        </ul>
+
+                                        <p>Cálculo:</p>
+                                        \[
+                                        \text{Carga actual} = \frac{3,596,116}{5,038} = 713.80
+                                        \]
+                                        \[
+                                        \text{Carga con vacantes} = \frac{3,596,116}{(5,038 + 245)} = 680.70
+                                        \]
+                                        \[
+                                        \text{Índice de Presión} = \left( \frac{713.80 - 680.70}{713.80} \right) \times 100 = 4.64\%
+                                        \]
+                                        Esto significa que <code>si se llenaran todas las vacantes, la carga por plaza ocupada bajaría en un 4.54%</code>.
+                                    </div>
+
+                                    <p><strong>📈 Interpretación del resultado:</strong></p>
+                                    <ul class="list-unstyled">
+                                        <li>🔴 <strong>Mayor a 15%:</strong> Urgente cubrir vacantes, alta presión en el sistema.</li>
+                                        <li>🟠 <strong>Entre 5% y 15%:</strong> Se recomienda cubrir vacantes.</li>
+                                        <li>🟢 <strong>Menor a 5%:</strong> Equilibrio en el sistema.</li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>RAZÓN DE DERECHOHABIENTES POR PLAZA OCUPADA ACTUALMENTE</h3>
+            <i>Derechohabientes asignados por cada trabajador de la salud - Distribución por OOAD</i>
+            <hr class="red">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- 🔹 Primer Mapa -->
+                    <div class="mapcontainer" id="mapa1">
+                        <div class="rightPanel">
+                            <div class="areaLegend">Niveles de Carga por Estado</div>
+                        </div>
+                        <div class="map"></div>
+                    </div>
+                </div>
+            </div>
+
+            <h3>RAZÓN DE DERECHOHABIENTES POR PLAZA CUBRIENDO PLAZAS VACANTES</h3>
+            <i>Derechohabientes asignados por cada trabajador de la salud considerando el total de ocupación - Distribución por OOAD</i>
+            <hr class="red">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- 🔹 Segundo Mapa -->
+                    <div class="mapcontainer" id="mapa2">
+                        <div class="rightPanel">
+                            <div class="areaLegend">Otro mapa con diferente métrica</div>
+                        </div>
+                        <div class="map"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--Construcción primer tabla totales vacantes o ocupación-->
+    <script>
+        // Obtener la referencia al cuerpo de la tabla
+        const tbodyTOT = document.querySelector("#tablaMedicos tbody");
+
+        // Insertar los datos en la tabla
+        totalVacOcu.forEach(item => {
+            const fila = `
+                <tr>
+                    <td>${item.total_medicos.toLocaleString()}</td>
+                    <td>${item.plazas_ocupadas.toLocaleString()}</td>
+                    <td>${item.plazas_vacantes.toLocaleString()}</td>
+                    <td>${item.porcentaje_ocupacion.toLocaleString()}%</td>
+                    <td>${item.porcentaje_vacantes.toLocaleString()}%</td>
+                </tr>
+            `;
+            tbodyTOT.innerHTML += fila;
+        });
+    </script>
+    <!--fin tabla-->
+
+    <!--inicio grafica de dona-->
+    <script>
+       var ctxDona1 = document.getElementById('graficaDona1').getContext('2d');
+
+        // Extraer etiquetas y valores del JSON
+        var labels = dona.map(item => item.RJP_DESCRIPCION);
+        var data = dona.map(item => item.cantidad);
+
+        // Colores personalizados
+        var colors = ['#00543D','#611232', '#a57f2c', '#000000', '#6F7271', '#DDDDDD'];
+
+        // Crear la gráfica de dona con datos dinámicos
+        var graficaDona1 = new Chart(ctxDona1, {
+            type: 'doughnut',
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: data,
+                    backgroundColor: colors
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+    <!--fin grafica de dona-->
+
+    <!--Construccion de tabla por nivel de atencion-->
+    <script>
+        // Insertar datos en la tabla
+        var tbody = document.querySelector("#tablaPlazas tbody");
+        jsonData.forEach(function(item) {
+            var row = `<tr>
+                <td>${item.Clasificacion_Unidad}</td>
+                <td>${item.Plazas_Ocupadas.toLocaleString()}</td>
+                <td>${item.Plazas_Vacantes.toLocaleString()}</td>
+                <td>${item.Porcentaje_Ocupadas.toFixed(2)}%</td>
+                <td>${item.Porcentaje_Vacantes.toFixed(2)}%</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    </script>
+    <!--fin de tabla plazas ocupadas y vacantes por nivel de atencion-->
+
+    <!-- Construccion de tabla de distribucion de genero por especialidad-->
+    <script>
+
+        // Seleccionar el tbody correcto por su ID
+        const tbodyDistribucion = document.getElementById("tbodyDistribucion");
+
+        // Limpiar el tbody antes de insertar datos
+        tbodyDistribucion.innerHTML = "";
+
+        let totalHombres = 0, totalMujeres = 0, totalGeneral = 0;
+
+        // Recorrer los datos y agregarlos a la tabla
+        dataDisctribucion.forEach(item => {
+            // Verificar si es la fila "Total General" para manejarla de manera especial
+            if (item.especialidad === "Total General") {
+                totalHombres = item.hombres;
+                totalMujeres = item.mujeres;
+                totalGeneral = item.total;
+                
+                // Insertar datos en el pie de la tabla
+                document.getElementById("totalHombres").innerText = totalHombres.toLocaleString();
+                document.getElementById("totalMujeres").innerText = totalMujeres.toLocaleString();
+                document.getElementById("totalGeneral").innerText = totalGeneral.toLocaleString();
+                document.getElementById("totalHombresPorcentaje").innerText = item.porcentaje_hombres.toFixed(2) + "%";
+                document.getElementById("totalMujeresPorcentaje").innerText = item.porcentaje_mujeres.toFixed(2) + "%";
+                document.getElementById("predominanciaTotal").innerText = item.predominio;
+            } else {
+                // Agregar las filas normales al tbody
+                tbodyDistribucion.insertAdjacentHTML("beforeend", `
+                    <tr>
+                        <td>${item.especialidad}</td>
+                        <td>${item.hombres.toLocaleString()}</td>
+                        <td>${item.mujeres.toLocaleString()}</td>
+                        <td>${item.total.toLocaleString()}</td>
+                        <td>${item.porcentaje_hombres.toFixed(2)}%</td>
+                        <td>${item.porcentaje_mujeres.toFixed(2)}%</td>
+                        <td>${item.predominio}</td>
+                    </tr>
+                `);
+            }
+        });
+    </script>
+    <!--fin tabla de distribucion de genero por especialidad-->
+
+    <!--inicio de grafica pastel-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Extraer los datos de "Total General" del JSON
+            let porcentajeHombres = 0, porcentajeMujeres = 0;
+
+            // Se utiliza el arreglo de la tabla de distribución de género por especialidad
+            dataDisctribucion.forEach(item => {
+                if (item.especialidad === "Total General") {
+                    porcentajeHombres = item.porcentaje_hombres;
+                    porcentajeMujeres = item.porcentaje_mujeres;
+                }
+            });
+
+            // Datos de la gráfica de pastel
+            const data2 = {
+                labels: ['Hombres', 'Mujeres'],
+                datasets: [{
+                    data: [porcentajeHombres, porcentajeMujeres], // Solo porcentajes
+                    backgroundColor: ['#00543D', '#a57f2c'], // Verde para hombres, Dorado para mujeres
+                    borderColor: ['#003926', '#8B7041'], // Bordes oscuros
+                    borderWidth: 1
+                }]
+            };
+
+            // Configuración de la gráfica
+            const config = {
+                type: 'pie',
+                data: data2,
+                options: {
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                generateLabels: function (chart) {
+                                    const data = chart.data.datasets[0].data;
+                                    const labels = chart.data.labels;
+                                    return labels.map((label, index) => ({
+                                        text: `${label}: ${data[index]}%`, // Solo muestra el porcentaje
+                                        fillStyle: chart.data.datasets[0].backgroundColor[index],
+                                        strokeStyle: chart.data.datasets[0].borderColor[index],
+                                        hidden: false,
+                                        index: index
+                                    }));
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return `${context.label}: ${context.raw}%`; // Solo muestra el porcentaje
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Renderizar la gráfica
+            const ctx = document.getElementById('graficaPastel').getContext('2d');
+            new Chart(ctx, config);
+        });
+    </script>
+    <!--fin grafica pastel-->
+
+    <!--graficas de lineas-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Obtener el contexto del canvas
+            const ctx10 = document.getElementById("graficaMedicos").getContext("2d");
+        
+            // Extraer datos de edades, hombres y mujeres
+            const edades = datosMedicos.map(d => d.Rango_Edad);
+            const totalHombres = datosMedicos.map(d => d.Hombres);
+            const totalMujeres = datosMedicos.map(d => d.Mujeres);
+        
+            // Configuración de la gráfica de líneas con dos datasets
+            new Chart(ctx10, {
+                type: "line",
+                data: {
+                    labels: edades, // Rango de edad en el eje X
+                    datasets: [
+                        {
+                            label: "Hombres",
+                            data: totalHombres,
+                            borderColor: "rgba(0, 84, 61, 1)",
+                            backgroundColor: "rgba(0, 84, 61, 0.3)",
+                            borderWidth: 2,
+                            fill: true,
+                            pointRadius: 5
+                        },
+                        {
+                            label: "Mujeres",
+                            data: totalMujeres,
+                            borderColor: "rgba(165, 127, 44, 1)",
+                            backgroundColor: "rgba(165, 127, 44, 0.6)",
+                            borderWidth: 2,
+                            fill: true,
+                            pointRadius: 5
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: true }
+                    },
+                    scales: {
+                        x: { title: { display: true, text: "Grupo de Edad" } },
+                        y: { title: { display: true, text: "Total de Médicos" }, beginAtZero: true }
+                    }
+                }
+            });
+        });
+    </script>
+    <!--fin grafica de lineas-->
+
+    <!--inicio tabla y modal detalle plazas ocupadas vacantes por OOAD-->
+    <script>
+        // Seleccionar el tbody correcto
+        const tbodyEstado = document.getElementById("tbodyEstado");
+
+        // Limpiar el tbody antes de insertar datos
+        tbodyEstado.innerHTML = "";
+
+        // Insertar los datos en la tabla
+        datosDelegaciones.forEach(item => {
+            let row = `
+                <tr data-numdel="${item.NUMDEL}">
+                    <td>${item.NUMDEL}</td>
+                    <td>${item.DELEGACION}</td>
+                    <td>${item.TOTAL_UNIDADES}</td>
+                    <td>${item.OCUPADAS.toLocaleString()}</td>
+                    <td>${item.VACANTES.toLocaleString()}</td>
+                    <td>${item.PORCENTAJE_OCUPADAS.toFixed(2)}%</td>
+                    <td>${item.PORCENTAJE_VACANTES.toFixed(2)}%</td>
+                </tr>
+            `;
+            tbodyEstado.insertAdjacentHTML("beforeend", row);
+        });
+
+        // modal desagregado
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll("#tablaEstado tbody").forEach(tbody => {
+                tbody.addEventListener("click", function(event) {
+                    let row = event.target.closest("tr");
+                    if (!row) return;
+                    
+                    let numdel = row.getAttribute("data-numdel");
+
+                    if (typeof datosDelegacionesDesagregado === "undefined") {
+                        console.error("Error: No se ha cargado datosDelegaciones. Verifica que modal.js esté incluido en el HTML.");
+                        return;
+                    }
+
+                    // Filtrar los datos de la delegación seleccionada
+                    let datosFiltrados = datosDelegacionesDesagregado.filter(item => item.NUMDEL === numdel);
+
+                    if (datosFiltrados.length > 0) {
+                        document.getElementById("modalDelegacionNombre").textContent = "OOAD o Delegación: " + datosFiltrados[0].DELEGACION;
+
+                        let tbody = document.getElementById("modalDelegacionDatos");
+                        tbody.innerHTML = ""; // Limpiar datos anteriores
+
+                        // Calcular la suma total de vacantes
+                        let totalVacantes = 0;
+
+                        datosFiltrados.forEach(item => {
+                            totalVacantes += parseInt(item.VACANTES, 10); // Sumar vacantes asegurando que sean números
+                            let row = `<tr>
+                                <td>${item.CATEGORIA}</td>
+                                <td>${item.DESCRIPCION}</td>
+                                <td>${item.VACANTES}</td>
+                            </tr>`;
+                            tbody.innerHTML += row;
+                        });
+
+                        // Mostrar el total en el modal
+                        document.getElementById("totalVacantes").textContent = totalVacantes.toLocaleString();
+
+                        // Mostrar el modal
+                        $("#modalDelegacion").modal("show");
+                    } else {
+                        alert("No hay datos disponibles para esta delegación.");
+                    }
+                });
+            });
+        });
+    </script>
+    <!--fin tabla y modal -->
+
+    <!--inicio bar chart-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Extraer datos dinámicamente
+            const labels = datosDelegaciones.map(item => item.DELEGACION);
+            const totalUnidades = datosDelegaciones.map(item => item.TOTAL_UNIDADES);
+            const ocupadas = datosDelegaciones.map(item => item.OCUPADAS);
+            const vacantes = datosDelegaciones.map(item => item.VACANTES);
+
+            // Configuración de la gráfica
+            const ctx = document.getElementById('barChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels, // Delegaciones como etiquetas del eje X
+                    datasets: [
+                        {
+                            label: "Total Unidades",
+                            data: totalUnidades,
+                            backgroundColor: "rgba(0, 84, 61, 1)",
+                            borderColor: "rgba(0, 84, 61, 1)",
+                            borderWidth: 1
+                        },
+                        {
+                            label: "Ocupadas",
+                            data: ocupadas,
+                            backgroundColor: "rgba(97, 18, 50, 1)",
+                            borderColor: "rgba(97, 18, 50, 1)",
+                            borderWidth: 1
+                        },
+                        {
+                            label: "Vacantes",
+                            data: vacantes,
+                            backgroundColor: "rgba(165, 127, 44, 1)",
+                            borderColor: "rgba(165, 127, 44, 1)",
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Comparación de Total de Unidades, Plazas Ocupadas y Plazas Vacantes por OOAD o Delegación'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'OOAD o Delegación'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Cantidad'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <!--fin bar chart-->
+
+    <!--generar la tabla densidad poblacional y categoria abajo con del archivo categoria.js-->
+    <script>
+
+        // 📌 Función para calcular los valores y mostrar la tabla con el nuevo formato
+        function generarTabla() {
+            let contenidoHTML = "";
+
+            datos.forEach(fila => {
+                let estado = fila.DELEGACION;
+                let derechohabientes = fila.DERECHOHABIENTES;
+                let plazas_ocupadas = fila.PLAZAS_OCUPADAS;
+                let plazas_vacantes = fila.PLAZAS_VACANTES;
+
+                let carga_actual = derechohabientes / plazas_ocupadas;
+                let carga_con_vacantes = derechohabientes / (plazas_ocupadas + plazas_vacantes);
+                let diferencia_absoluta = carga_actual - carga_con_vacantes;
+                let indice_presion = (diferencia_absoluta / carga_actual) * 100;
+
+                // 📌 Color y iconos según el nivel de presión
+                let badge;
+                if (indice_presion >= 15) {
+                    badge = `<span class='badge badge-danger'><i class='fas fa-exclamation-triangle'></i> ${indice_presion.toFixed(2)}%</span>`;
+                } else if (indice_presion >= 5) {
+                    badge = `<span class='badge badge-warning'><i class='fas fa-exclamation-circle'></i> ${indice_presion.toFixed(2)}%</span>`;
+                } else {
+                    badge = `<span class='badge badge-success'><i class='fas fa-check-circle'></i> ${indice_presion.toFixed(2)}%</span>`;
+                }
+
+                contenidoHTML += `
+                    <tr class='text-center'>
+                        <td>${estado}</td>
+                        <td>${derechohabientes.toLocaleString()}</td>
+                        <td>${plazas_ocupadas.toLocaleString()}</td>
+                        <td>${plazas_vacantes.toLocaleString()}</td>
+                        <td>${carga_actual.toFixed(2)}</td>
+                        <td>${carga_con_vacantes.toFixed(2)}</td>
+                        <td>${diferencia_absoluta.toFixed(2)}</td>
+                        <td>${badge}</td>
+                    </tr>
+                `;
+            });
+
+            // Agregar contenido a la tabla
+            document.getElementById("contenidoTabla").innerHTML = contenidoHTML;
+        }
+
+        // Ejecutar la función para construir la tabla
+        generarTabla();
+
+    
+
+        // 📌 Datos de la tabla (extraídos de tu consulta SQL)
+        document.addEventListener("DOMContentLoaded", function () {
+
+        function getBadge(PORCENTAJE_OCUPACION) {
+            if (PORCENTAJE_OCUPACION >= 90) return `<span class="badge badge-success"><i class="fas fa-check-circle"></i> ${PORCENTAJE_OCUPACION}%</span>`;
+            if (PORCENTAJE_OCUPACION >= 75) return `<span class="badge badge-warning"><i class="fas fa-exclamation-circle"></i> ${PORCENTAJE_OCUPACION}%</span>`;
+            return `<span class="badge badge-danger"><i class="fas fa-exclamation-triangle"></i> ${PORCENTAJE_OCUPACION}%</span>`;
+        }
+
+        let tbody = "";
+            datos8.forEach(dato => {
+                tbody += `
+                    <tr class='text-center'>
+                        <td>${dato.CATEGORIA}</td>
+                        <td>${dato.PLAZAS_OCUPADAS.toLocaleString()}</td>
+                        <td>${dato.PLAZAS_VACANTES.toLocaleString()}</td>
+                        <td>${dato.DIFERENCIA.toLocaleString()}</td>
+                        <td>${getBadge(dato.PORCENTAJE_OCUPACION)}</td>
+                    </tr>
+                `;
+            });
+
+            document.querySelector("#tablaOcupacion tbody").innerHTML = tbody;
+        });
+    </script>
+    <!--fin generacion tabla con JS-->
+
+    <!-- genera la tabla de distribucion de frecuencias por lugar de nacimiento y trabajo-->
+    <script>
+        // Esperar a que se cargue el script antes de ejecutar
+       document.addEventListener("DOMContentLoaded", function() {
+           // Obtener referencia a la tabla
+           const table = document.getElementById("distribucionDeFrecuencias");
+
+           // Acceder a los datos del archivo JS
+           const dis = Distribucionfrecuencias[0]; // Solo hay un objeto en el array
+
+           // Mapeo para asociar cantidades con sus porcentajes
+           const percentageMapping = {
+               "PERSONAL DENTRO DEL ORIGEN": dis["PORCENTAJE DENTRO DEL ORIGEN"],
+               "PERSONAL FUERA DEL ORIGEN": dis["PORCENTAJE FUERA DEL ORIGEN"]
+           };
+
+           // Crear encabezado de la tabla
+           let headerRow = table.insertRow();
+           headerRow.insertCell(0).innerHTML = "<strong>Descripción</strong>";
+           headerRow.insertCell(1).innerHTML = "<strong>Cantidad</strong>";
+           headerRow.insertCell(2).innerHTML = "<strong>Porcentaje</strong>";
+
+           // Insertar datos en la tabla
+           Object.entries(dis).forEach(([key, value]) => {
+               if (key.includes("PORCENTAJE")) return; // Saltar los valores de porcentaje en esta fase
+               
+               let row = table.insertRow();
+               let cell1 = row.insertCell(0);
+               let cell2 = row.insertCell(1);
+               let cell3 = row.insertCell(2);
+
+               // Agregar negritas a los nombres de las categorías
+               cell1.innerHTML = `<strong>${key}</strong>`;
+               cell2.textContent = value.toLocaleString();
+               cell3.textContent = percentageMapping[key] || "100%"; // Si tiene porcentaje, lo coloca; si no, pone "--"
+           });
+       });
+    </script>
+    <!--fin tabla-->
+
+    <!--genera grafica de dona de distribucion de frecuencias lugar de nacimiento y trabajo-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const valores = Distribucionfrecuencias[0]; // Tomar el objeto de datos
+
+            // Obtener el contexto del canvas
+            var ctx = document.getElementById('pieChart').getContext('2d');
+
+            // Crear la gráfica de pastel con Chart.js
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ["PERSONAL DENTRO DEL ORIGEN", "PERSONAL FUERA DEL ORIGEN"],
+                    datasets: [{
+                        data: [valores["PERSONAL DENTRO DEL ORIGEN"], valores["PERSONAL FUERA DEL ORIGEN"]],
+                        backgroundColor: ['#611232', '#a57f2c']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <!--fin grafica de dona-->
+
+    <!--genera tabla relacion origen trabajo: frecuancia y porcentaje-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const tabla = document.getElementById("tablaOrigenTrabajo").getElementsByTagName("tbody")[0];
+
+            // Llenar la tabla con los datos del arreglo
+            relacionOrigenTrabajo.forEach(item => {
+                let row = tabla.insertRow();
+                row.insertCell(0).textContent = item["estado_nacimiento"];
+                row.insertCell(1).textContent = item["total_nacidos"].toLocaleString();
+                row.insertCell(2).textContent = item["trabajan_en_mismo_estado"].toLocaleString();
+                row.insertCell(3).textContent = item["trabajan_en_otro_estado"].toLocaleString();
+                row.insertCell(4).textContent = item["porcentaje_mismo_estado"];
+                row.insertCell(5).textContent = item["porcentaje_otro_estado"];
+            });
+        });
+    </script>
+    <!--fin tabla-->
+
+    <!--grafica de barras relacion origen trabajo: frecuencia y porcentaje-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const valores = relacionOrigenTrabajo; // Tomar el array completo
+
+            // Extraer los datos para la gráfica
+            const estados = valores.map(item => item["estado_nacimiento"]);
+            const totalNacidos = valores.map(item => item["total_nacidos"]);
+            const trabajanMismoEstado = valores.map(item => item["trabajan_en_mismo_estado"]);
+            const trabajanOtroEstado = valores.map(item => item["trabajan_en_otro_estado"]);
+
+            // Obtener el contexto del canvas
+            var ctx = document.getElementById('origenTrabajo').getContext('2d');
+
+            // Crear la gráfica de barras con Chart.js
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: estados,
+                    datasets: [
+                        {
+                            label: "Total Nacidos",
+                            data: totalNacidos,
+                            backgroundColor: "rgba(0, 84, 61, 1)", // Azul
+                        },
+                        {
+                            label: "Trabajan en Mismo Estado",
+                            data: trabajanMismoEstado,
+                            backgroundColor: "rgba(97, 18, 50, 1)", // Verde agua
+                        },
+                        {
+                            label: "Trabajan en Otro Estado",
+                            data: trabajanOtroEstado,
+                            backgroundColor: "rgba(165, 127, 44, 1)", // Rojo
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        },
+                        title: {
+                            display: true,
+                            text: 'Relación Origen-Trabajo: Frecuencia y Porcentaje'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                autoSkip: false,
+                                maxRotation: 45,
+                                minRotation: 45
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: "Número de Personas"
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    <!--fin grafica-->
+
+    <!--genera mapa de calor-->
+    <script>
+        // 📌 Función para remover acentos y convertir texto a minúsculas
+        function normalizarTexto(texto) {
+            return texto.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // 📌 Función para obtener datos del PRIMER mapa (Carga Actual)
+        function obtenerDatosMapaCargaActual() {
+            let estadosMapael = {};
+
+            datos.forEach(fila => {
+                let estadoClave = normalizarTexto(fila.DELEGACION);
+                if (!$.mapael.maps.mexico.elems.hasOwnProperty(estadoClave)) return;
+
+                let carga_actual = fila.DERECHOHABIENTES / fila.PLAZAS_OCUPADAS;
+
+                let color = asignarColor(carga_actual);
+
+                estadosMapael[estadoClave] = {
+                    value: carga_actual.toFixed(2),
+                    attrs: { fill: color, stroke: "#fff", "stroke-width": 1.5 },
+                    tooltip: {
+                        content: `
+                            <h5>OOAD: ${fila.DELEGACION}</h5>
+                            <p>Derechohabientes: ${fila.DERECHOHABIENTES.toLocaleString()}</p>
+                            <p>Plazas Ocupadas: ${fila.PLAZAS_OCUPADAS.toLocaleString()}</p>
+                            <p>🚨 Carga Actual: ${carga_actual.toFixed(2)}</p>
+                        `
+                    }
+                };
+            });
+
+            return estadosMapael;
+        }
+
+        // 📌 Función para obtener datos del SEGUNDO mapa (Carga con Vacantes)
+        function obtenerDatosMapaCargaConVacantes() {
+            let estadosMapael = {};
+
+            datos.forEach(fila => {
+                let estadoClave = normalizarTexto(fila.DELEGACION);
+                if (!$.mapael.maps.mexico.elems.hasOwnProperty(estadoClave)) return;
+
+                let carga_con_vacantes = fila.DERECHOHABIENTES / (fila.PLAZAS_OCUPADAS + fila.PLAZAS_VACANTES);
+
+                let color = asignarColor(carga_con_vacantes);
+
+                estadosMapael[estadoClave] = {
+                    value: carga_con_vacantes.toFixed(2),
+                    attrs: { fill: color, stroke: "#fff", "stroke-width": 1.5 },
+                    tooltip: {
+                        content: `
+                            <h5>OOAD: ${fila.DELEGACION}</h5>
+                            <p>Derechohabientes: ${fila.DERECHOHABIENTES.toLocaleString()}</p>
+                            <p>Plazas Ocupadas: ${fila.PLAZAS_OCUPADAS.toLocaleString()}</p>
+                            <p>Plazas Vacantes: ${fila.PLAZAS_VACANTES.toLocaleString()}</p>
+                            <p>🚨 Carga con Vacantes: ${carga_con_vacantes.toFixed(2)}</p>
+                        `
+                    }
+                };
+            });
+
+            return estadosMapael;
+        }
+
+        // 📌 Función para asignar colores según el nivel de carga
+        function asignarColor(valor) {
+            if (valor >= 700) return "#691C32";
+            if (valor >= 650) return "#A93220";
+            if (valor >= 600) return "#C6551A";
+            if (valor >= 550) return "#D97A29";
+            if (valor >= 500) return "#E69B32";
+            if (valor >= 450) return "#EFC849";
+            if (valor >= 400) return "#FFEB99";
+            return "#235B4E";
+        }
+
+        // 📌 Generar el PRIMER mapa (Carga Actual)
+        $(function () {
+            $("#mapa1").mapael({
+                map: {
+                    name: "mexico",
+                    defaultArea: {
+                        attrs: { stroke: "#fff", "stroke-width": 1.5 },
+                        attrsHover: { "stroke-width": 3, fill: "#2C3E50" }
+                    }
+                },
+                legend: {
+                    area: {
+                        title: "Carga No Cubriendo Plazas Vacantes",
+                        slices: generarLeyenda()
+                    }
+                },
+                areas: obtenerDatosMapaCargaActual()
+            });
+
+            // 📌 Generar el SEGUNDO mapa (Carga con Vacantes)
+            $("#mapa2").mapael({
+                map: {
+                    name: "mexico",
+                    defaultArea: {
+                        attrs: { stroke: "#fff", "stroke-width": 1.5 },
+                        attrsHover: { "stroke-width": 3, fill: "#2C3E50" }
+                    }
+                },
+                legend: {
+                    area: {
+                        title: "Carga Cubriendo Plazas Vacantes",
+                        slices: generarLeyenda()
+                    }
+                },
+                areas: obtenerDatosMapaCargaConVacantes()
+            });
+        });
+
+        // 📌 Función para generar la leyenda
+        function generarLeyenda() {
+            return [
+                { min: 700, attrs: { fill: "#691C32" }, label: "(> 700)" },
+                { min: 650, max: 699.99, attrs: { fill: "#A93220" }, label: "(650 - 699)" },
+                { min: 600, max: 649.99, attrs: { fill: "#C6551A" }, label: "(600 - 649)" },
+                { min: 550, max: 599.99, attrs: { fill: "#D97A29" }, label: "(550 - 599)" },
+                { min: 500, max: 549.99, attrs: { fill: "#E69B32" }, label: "(500 - 549)" },
+                { min: 450, max: 499.99, attrs: { fill: "#EFC849" }, label: "(450 - 499)" },
+                { min: 400, max: 449.99, attrs: { fill: "#FFEB99" }, label: "(400 - 449)" },
+                { max: 399, attrs: { fill: "#235B4E" }, label: "(< 399)" }
+            ];
+        }
+    </script>
+    <!--fin mapa de calor-->
+
+    <!--inicio de los data tables-->
+    <script>
+        $(document).ready(function() {
+            $('#tablaDistribucion').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json"
+                },
+                footerCallback: function(row, data, start, end, display) {
+                    // Este callback permite manipular el footer si es necesario (por ejemplo, cálculos dinámicos)
+                }
+            });
+            $('#tablaEstado').DataTable({
+                paging: true,
+                searching: true,
+                ordering: true,
+                language: {
+                    url: "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json"
+                },
+                footerCallback: function(row, data, start, end, display) {
+                    // Este callback permite manipular el footer si es necesario (por ejemplo, cálculos dinámicos)
+                }
+            });
+            $('#tablaDensidad').DataTable({
+                "pageLength": 50, // Mostrar 50 registros por página
+                "order": [[7, "desc"]], // Ordenar por Índice de Presión (%)
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json"
+                }
+            });
+            $('#tablaOcupacion').DataTable({
+                "order": [[2, "desc"]], // Ordenar por Índice de Presión (%)
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.13.4/i18n/es-MX.json"
+                }
+            });
+            // Inicializar DataTable con paginación de 50 registros por página
+            $('#tablaOrigenTrabajo').DataTable({
+                "pageLength": 50, // Mostrar 50 registros por página
+                "lengthMenu": [[50, 100, 200, -1], [50, 100, 200, "Todos"]],
+                "language": {
+                    "lengthMenu": "Mostrar _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Mostrando página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles",
+                    "infoFiltered": "(filtrado de _MAX_ registros en total)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    }
+                }
+            });
+        });
+    </script>
+    <!--fin de los data tables-->
+
+    <script>
+        function scrollToSection(id) {
+            var element = document.getElementById(id);
+            var offset = 130; // Ajusta este valor según la altura del menú superior
+            var elementPosition = element.getBoundingClientRect().top + window.scrollY;
+            var offsetPosition = elementPosition - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth"
+            });
+        }
+    </script>
+
+    <script src="https://framework-gb.cdn.gob.mx/gobmx.js"></script>   
+</body>
+</html>

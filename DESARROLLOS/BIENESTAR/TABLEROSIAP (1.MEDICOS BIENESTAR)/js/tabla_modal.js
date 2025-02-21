@@ -1,0 +1,1063 @@
+/* query para crear la tabla plazas ocupadas y vacantes por OOAD ejecutar el siguiente query
+SELECT
+	p.NUMDEL,
+	p.DELEGACION,
+	COUNT(DISTINCT p.DEPENDENCIA) AS TOTAL_UNIDADES,
+	SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) AS OCUPADAS,
+	SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) AS VACANTES,
+	ROUND(SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_OCUPADAS,
+	ROUND(SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_VACANTES
+FROM 
+	personalaps.plantillaordinario p
+WHERE 
+	DESCRIP_CLASCATEG = '1.MÉDICOS'
+AND QNA = '2024017'
+GROUP BY
+	p.NUMDEL, p.DELEGACION
+ORDER BY
+	p.NUMDEL; */
+
+const datosDelegaciones = [
+	{
+		"NUMDEL" : "02",
+		"DELEGACION" : "Baja California",
+		"TOTAL_UNIDADES" : 5,
+		"OCUPADAS" : 30,
+		"VACANTES" : 23,
+		"PORCENTAJE_OCUPADAS" : 56.60,
+		"PORCENTAJE_VACANTES" : 43.40
+	},
+	{
+		"NUMDEL" : "04",
+		"DELEGACION" : "Campeche",
+		"TOTAL_UNIDADES" : 32,
+		"OCUPADAS" : 74,
+		"VACANTES" : 35,
+		"PORCENTAJE_OCUPADAS" : 67.89,
+		"PORCENTAJE_VACANTES" : 32.11
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"TOTAL_UNIDADES" : 34,
+		"OCUPADAS" : 94,
+		"VACANTES" : 61,
+		"PORCENTAJE_OCUPADAS" : 60.65,
+		"PORCENTAJE_VACANTES" : 39.35
+	},
+	{
+		"NUMDEL" : "06",
+		"DELEGACION" : "Colima",
+		"TOTAL_UNIDADES" : 1,
+		"OCUPADAS" : 28,
+		"VACANTES" : 5,
+		"PORCENTAJE_OCUPADAS" : 84.85,
+		"PORCENTAJE_VACANTES" : 15.15
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"TOTAL_UNIDADES" : 621,
+		"OCUPADAS" : 760,
+		"VACANTES" : 290,
+		"PORCENTAJE_OCUPADAS" : 72.38,
+		"PORCENTAJE_VACANTES" : 27.62
+	},
+	{
+		"NUMDEL" : "08",
+		"DELEGACION" : "Chihuahua",
+		"TOTAL_UNIDADES" : 95,
+		"OCUPADAS" : 93,
+		"VACANTES" : 121,
+		"PORCENTAJE_OCUPADAS" : 43.46,
+		"PORCENTAJE_VACANTES" : 56.54
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"TOTAL_UNIDADES" : 1,
+		"OCUPADAS" : 21,
+		"VACANTES" : 13,
+		"PORCENTAJE_OCUPADAS" : 61.76,
+		"PORCENTAJE_VACANTES" : 38.24
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"TOTAL_UNIDADES" : 88,
+		"OCUPADAS" : 116,
+		"VACANTES" : 97,
+		"PORCENTAJE_OCUPADAS" : 54.46,
+		"PORCENTAJE_VACANTES" : 45.54
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"TOTAL_UNIDADES" : 28,
+		"OCUPADAS" : 45,
+		"VACANTES" : 26,
+		"PORCENTAJE_OCUPADAS" : 63.38,
+		"PORCENTAJE_VACANTES" : 36.62
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"TOTAL_UNIDADES" : 144,
+		"OCUPADAS" : 213,
+		"VACANTES" : 104,
+		"PORCENTAJE_OCUPADAS" : 67.19,
+		"PORCENTAJE_VACANTES" : 32.81
+	},
+	{
+		"NUMDEL" : "16",
+		"DELEGACION" : "México Poniente",
+		"TOTAL_UNIDADES" : 34,
+		"OCUPADAS" : 72,
+		"VACANTES" : 46,
+		"PORCENTAJE_OCUPADAS" : 61.02,
+		"PORCENTAJE_VACANTES" : 38.98
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"TOTAL_UNIDADES" : 175,
+		"OCUPADAS" : 281,
+		"VACANTES" : 173,
+		"PORCENTAJE_OCUPADAS" : 61.89,
+		"PORCENTAJE_VACANTES" : 38.11
+	},
+	{
+		"NUMDEL" : "19",
+		"DELEGACION" : "Nayarit",
+		"TOTAL_UNIDADES" : 178,
+		"OCUPADAS" : 234,
+		"VACANTES" : 29,
+		"PORCENTAJE_OCUPADAS" : 88.97,
+		"PORCENTAJE_VACANTES" : 11.03
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"TOTAL_UNIDADES" : 531,
+		"OCUPADAS" : 794,
+		"VACANTES" : 152,
+		"PORCENTAJE_OCUPADAS" : 83.93,
+		"PORCENTAJE_VACANTES" : 16.07
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"TOTAL_UNIDADES" : 186,
+		"OCUPADAS" : 327,
+		"VACANTES" : 153,
+		"PORCENTAJE_OCUPADAS" : 68.13,
+		"PORCENTAJE_VACANTES" : 31.88
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"TOTAL_UNIDADES" : 232,
+		"OCUPADAS" : 256,
+		"VACANTES" : 213,
+		"PORCENTAJE_OCUPADAS" : 54.58,
+		"PORCENTAJE_VACANTES" : 45.42
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"TOTAL_UNIDADES" : 111,
+		"OCUPADAS" : 117,
+		"VACANTES" : 79,
+		"PORCENTAJE_OCUPADAS" : 59.69,
+		"PORCENTAJE_VACANTES" : 40.31
+	},
+	{
+		"NUMDEL" : "29",
+		"DELEGACION" : "Tamaulipas",
+		"TOTAL_UNIDADES" : 51,
+		"OCUPADAS" : 85,
+		"VACANTES" : 123,
+		"PORCENTAJE_OCUPADAS" : 40.87,
+		"PORCENTAJE_VACANTES" : 59.13
+	},
+	{
+		"NUMDEL" : "30",
+		"DELEGACION" : "Tlaxcala",
+		"TOTAL_UNIDADES" : 170,
+		"OCUPADAS" : 253,
+		"VACANTES" : 5,
+		"PORCENTAJE_OCUPADAS" : 98.06,
+		"PORCENTAJE_VACANTES" : 1.94
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"TOTAL_UNIDADES" : 316,
+		"OCUPADAS" : 321,
+		"VACANTES" : 128,
+		"PORCENTAJE_OCUPADAS" : 71.49,
+		"PORCENTAJE_VACANTES" : 28.51
+	},
+	{
+		"NUMDEL" : "32",
+		"DELEGACION" : "Veracruz Sur",
+		"TOTAL_UNIDADES" : 253,
+		"OCUPADAS" : 235,
+		"VACANTES" : 159,
+		"PORCENTAJE_OCUPADAS" : 59.64,
+		"PORCENTAJE_VACANTES" : 40.36
+	},
+	{
+		"NUMDEL" : "33",
+		"DELEGACION" : "Yucatán",
+		"TOTAL_UNIDADES" : 43,
+		"OCUPADAS" : 168,
+		"VACANTES" : 48,
+		"PORCENTAJE_OCUPADAS" : 77.78,
+		"PORCENTAJE_VACANTES" : 22.22
+	},
+	{
+		"NUMDEL" : "34",
+		"DELEGACION" : "Zacatecas",
+		"TOTAL_UNIDADES" : 157,
+		"OCUPADAS" : 218,
+		"VACANTES" : 179,
+		"PORCENTAJE_OCUPADAS" : 54.91,
+		"PORCENTAJE_VACANTES" : 45.09
+	}
+];
+
+/* query para extraer esta información del modal desagregado
+SELECT 
+    p.NUMDEL, 
+    p.DELEGACION, 
+    p.CATEGORIA AS CATEGORIA, 
+    p.DESCRIP_CLASCATEG AS DESCRIPCION,
+    COUNT(CASE WHEN p.PLZVAC = 1 THEN p.MATRICULA END) AS VACANTES
+FROM 
+    personalaps.plantillaordinario p
+WHERE p.DESCRIP_CLASCATEG = "1.MÉDICOS"
+AND QNA = '2024017'
+GROUP BY 
+    p.NUMDEL, p.DELEGACION, p.CATEGORIA
+HAVING 
+    COUNT(CASE WHEN p.PLZVAC = 1 THEN p.MATRICULA END) > 0
+ORDER BY 
+    p.NUMDEL, p.CATEGORIA;
+*/
+const datosDelegacionesDesagregado = [
+	{
+		"NUMDEL" : "02",
+		"DELEGACION" : "Baja California",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "02",
+		"DELEGACION" : "Baja California",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 19
+	},
+	{
+		"NUMDEL" : "02",
+		"DELEGACION" : "Baja California",
+		"CATEGORIA" : "N43 MEDICO ESP HR 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "04",
+		"DELEGACION" : "Campeche",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 31
+	},
+	{
+		"NUMDEL" : "04",
+		"DELEGACION" : "Campeche",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "04",
+		"DELEGACION" : "Campeche",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "04",
+		"DELEGACION" : "Campeche",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 14
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 45
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "06",
+		"DELEGACION" : "Colima",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 5
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 125
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 149
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 6
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "08",
+		"DELEGACION" : "Chihuahua",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 59
+	},
+	{
+		"NUMDEL" : "08",
+		"DELEGACION" : "Chihuahua",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 55
+	},
+	{
+		"NUMDEL" : "08",
+		"DELEGACION" : "Chihuahua",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "08",
+		"DELEGACION" : "Chihuahua",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "08",
+		"DELEGACION" : "Chihuahua",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "JEFE AREA MEDICA RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "MED ESPECIAL HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "MED GENERAL UNIDAD MEDICA E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "N57 COORD PROG MED RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "N62 JEFE AREA MED RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "09",
+		"DELEGACION" : "Nivel Central",
+		"CATEGORIA" : "N62 JEFE AREA MEDICA   80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 36
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 54
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "10",
+		"DELEGACION" : "Durango",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 7
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 15
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "12",
+		"DELEGACION" : "Guerrero",
+		"CATEGORIA" : "SUPERV MEDICO PROGS RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 40
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 54
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "13",
+		"DELEGACION" : "Hidalgo",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "16",
+		"DELEGACION" : "México Poniente",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 11
+	},
+	{
+		"NUMDEL" : "16",
+		"DELEGACION" : "México Poniente",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 34
+	},
+	{
+		"NUMDEL" : "16",
+		"DELEGACION" : "México Poniente",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 40
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 125
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "17",
+		"DELEGACION" : "Michoacán",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "19",
+		"DELEGACION" : "Nayarit",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 27
+	},
+	{
+		"NUMDEL" : "19",
+		"DELEGACION" : "Nayarit",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "19",
+		"DELEGACION" : "Nayarit",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 36
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 97
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 6
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 7
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "21",
+		"DELEGACION" : "Oaxaca",
+		"CATEGORIA" : "SUPERV MEDICO PROGS RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 51
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 91
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 6
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "22",
+		"DELEGACION" : "Puebla",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "MED GENERAL UNIDAD MEDICA E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 76
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 121
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "N43 MEDICO ESP HR 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "N56 SUPERV MED PROG RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "25",
+		"DELEGACION" : "San Luis Potosí",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 51
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 27
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "29",
+		"DELEGACION" : "Tamaulipas",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 35
+	},
+	{
+		"NUMDEL" : "29",
+		"DELEGACION" : "Tamaulipas",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 87
+	},
+	{
+		"NUMDEL" : "29",
+		"DELEGACION" : "Tamaulipas",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "30",
+		"DELEGACION" : "Tlaxcala",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 5
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 69
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 52
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"CATEGORIA" : "N41 SUPERV MED AUX UMR RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "31",
+		"DELEGACION" : "Veracruz Norte",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "32",
+		"DELEGACION" : "Veracruz Sur",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 122
+	},
+	{
+		"NUMDEL" : "32",
+		"DELEGACION" : "Veracruz Sur",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 32
+	},
+	{
+		"NUMDEL" : "32",
+		"DELEGACION" : "Veracruz Sur",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "32",
+		"DELEGACION" : "Veracruz Sur",
+		"CATEGORIA" : "N52 DIRECTOR HOSP RURAL80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "32",
+		"DELEGACION" : "Veracruz Sur",
+		"CATEGORIA" : "SUPERV MEDICO AUX UMR RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "33",
+		"DELEGACION" : "Yucatán",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "33",
+		"DELEGACION" : "Yucatán",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 6
+	},
+	{
+		"NUMDEL" : "33",
+		"DELEGACION" : "Yucatán",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 39
+	},
+	{
+		"NUMDEL" : "33",
+		"DELEGACION" : "Yucatán",
+		"CATEGORIA" : "N45 COORD MEDICO HR",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "33",
+		"DELEGACION" : "Yucatán",
+		"CATEGORIA" : "N57 COOR DELEG MED RURAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "34",
+		"DELEGACION" : "Zacatecas",
+		"CATEGORIA" : "COORD MEDICO HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "34",
+		"DELEGACION" : "Zacatecas",
+		"CATEGORIA" : "DIR HOSPITAL RURAL E0",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "34",
+		"DELEGACION" : "Zacatecas",
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 88
+	},
+	{
+		"NUMDEL" : "34",
+		"DELEGACION" : "Zacatecas",
+		"CATEGORIA" : "MEDICO NO FAMILIAR H R",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 87
+	}
+];
