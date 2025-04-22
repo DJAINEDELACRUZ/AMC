@@ -1,0 +1,214 @@
+/* query para crear la tabla plazas ocupadas y vacantes por OOAD ejecutar el siguiente query
+
+SELECT
+	p.NUMDEL,
+	p.DELEGACION,
+	COUNT(DISTINCT p.DEPENDENCIA) AS TOTAL_UNIDADES,
+	SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) AS OCUPADAS,
+	SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) AS VACANTES,
+	ROUND(SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_OCUPADAS,
+	ROUND(SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_VACANTES
+FROM 
+	personalaps.plantillaordinario p
+WHERE 
+	p.DESCRIP_CLASCATEG = '1.MÉDICOS'
+AND p.QNA = '2024017'
+AND p.NUMDEL = '27'
+AND p.DELEGACION = 'Sonora'
+GROUP BY
+	p.NUMDEL, p.DELEGACION
+ORDER BY
+	p.NUMDEL; 
+
+*/
+
+const datosDelegaciones = [
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"TOTAL_UNIDADES" : 90,
+		"OCUPADAS" : 3045,
+		"VACANTES" : 395,
+		"PORCENTAJE_OCUPADAS" : 88.52,
+		"PORCENTAJE_VACANTES" : 11.48
+	}
+];
+
+/* query para extraer esta información del modal desagregado
+SELECT 
+    p.NUMDEL, 
+    p.DELEGACION, 
+    p.CATEGORIA AS CATEGORIA, 
+    p.DESCRIP_CLASCATEG AS DESCRIPCION,
+    COUNT(*) AS VACANTES
+FROM 
+    personalaps.plantillaordinario p
+WHERE 
+    p.DESCRIP_CLASCATEG = '1.MÉDICOS'
+    AND p.QNA = '2024017'
+    AND p.NUMDEL = '27'
+	AND p.DELEGACION = 'Sonora'
+    AND p.PLZVAC = 1
+GROUP BY 
+    p.NUMDEL, p.DELEGACION, p.CATEGORIA, p.DESCRIP_CLASCATEG
+ORDER BY 
+    p.NUMDEL, p.CATEGORIA;
+*/
+const datosDelegacionesDesagregado = [
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "MED ESPECIALISTA PSIQUIATRA CAICE",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "MED TRAS PAC URGENCIA  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "MEDICO FAMILIAR        80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 32
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "MEDICO GENERAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 17
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "MEDICO NO FAMILIAR     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 291
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N48 DIRECTOR MICROZONA 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N49 DIR UMF 4 5 Y 6   80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N51 JEF SPPSTIMSS UMH 2NIV 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N51 JEFE SERVICIO CONSULT EXT UMH 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N51 JEFE SERVICIO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 14
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N51 JEFE SERVICIOS UMF 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N51 MEDICO ESP ST      80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N52 COORD CLINICO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 6
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N52 SUBDIR MEDICO UMF  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N53 COORD CL TURNO UMH 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N53 DIRECTOR UMH D     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N53 JEF DEPTO CLIN UMAE80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 14
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N53 SUBDIR MED UMH C   80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N55 JEFE DIV MED UMAE  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N55 MED ESP PEDIATRA CAICE",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N56 COORD AUX GEST MED D3YD4 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "27",
+		"DELEGACION" : "Sonora",
+		"CATEGORIA" : "N56 DIRECTOR UMH A     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	}
+];

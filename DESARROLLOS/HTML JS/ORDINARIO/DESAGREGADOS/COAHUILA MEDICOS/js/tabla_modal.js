@@ -1,0 +1,200 @@
+/* query para crear la tabla plazas ocupadas y vacantes por OOAD ejecutar el siguiente query
+
+SELECT
+	p.NUMDEL,
+	p.DELEGACION,
+	COUNT(DISTINCT p.DEPENDENCIA) AS TOTAL_UNIDADES,
+	SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) AS OCUPADAS,
+	SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) AS VACANTES,
+	ROUND(SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_OCUPADAS,
+	ROUND(SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_VACANTES
+FROM 
+	personalaps.plantillaordinario p
+WHERE 
+	p.DESCRIP_CLASCATEG = '1.MÉDICOS'
+AND p.QNA = '2024017'
+AND p.NUMDEL = '27'
+AND p.DELEGACION = 'Sonora'
+GROUP BY
+	p.NUMDEL, p.DELEGACION
+ORDER BY
+	p.NUMDEL; 
+
+*/
+
+const datosDelegaciones = [
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"TOTAL_UNIDADES" : 68,
+		"OCUPADAS" : 3098,
+		"VACANTES" : 349,
+		"PORCENTAJE_OCUPADAS" : 89.88,
+		"PORCENTAJE_VACANTES" : 10.12
+	}
+];
+
+/* query para extraer esta información del modal desagregado
+SELECT 
+    p.NUMDEL, 
+    p.DELEGACION, 
+    p.CATEGORIA AS CATEGORIA, 
+    p.DESCRIP_CLASCATEG AS DESCRIPCION,
+    COUNT(*) AS VACANTES
+FROM 
+    personalaps.plantillaordinario p
+WHERE 
+    p.DESCRIP_CLASCATEG = '1.MÉDICOS'
+    AND p.QNA = '2024017'
+    AND p.NUMDEL = '27'
+	AND p.DELEGACION = 'Sonora'
+    AND p.PLZVAC = 1
+GROUP BY 
+    p.NUMDEL, p.DELEGACION, p.CATEGORIA, p.DESCRIP_CLASCATEG
+ORDER BY 
+    p.NUMDEL, p.CATEGORIA;
+*/
+const datosDelegacionesDesagregado = [
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MED TRAS PAC TERAP INT 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MED TRAS PAC URGENCIA  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 12
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MEDICO FAMILIAR        80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 23
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MEDICO GENERAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 17
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "MEDICO NO FAMILIAR     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 250
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N51 JEF SPPSTIMSS UMH 2NIV 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 3
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N51 JEFE SERVICIO CONSULT EXT UMH 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N51 JEFE SERVICIO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 17
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N51 JEFE SERVICIOS UMF 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 7
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N52 COORD CLINICO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N53 COORD CL TURNO UMH 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N53 COORD HOSP DON ORG Y TEJ UMAE",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N53 DIRECTOR UMH D     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N53 JEF DEPTO CLIN UMAE80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N54 SUBDIR MED UMH B   80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N55 JEFE DIV MED UMAE  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N55 SUBD MED UMH A     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N56 COORD AUX GEST MED D3YD4 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N56 COORD AUX MED INVEST D3YD4 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "05",
+		"DELEGACION" : "Coahuila",
+		"CATEGORIA" : "N58 COORDINADOR(A) PLAN ENL INST D3 Y D4",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	}
+];

@@ -1,0 +1,451 @@
+/*Extraer este es un problema pero estos son los querys aplicados paso por paso para hacerlo
+
+-- Numero 1
+
+CREATE TABLE procesado.plazas_vacantes_por_estado_TOTAL AS
+SELECT
+    p.NUMDEL,
+    CASE
+        WHEN p.NUMDEL IN ('31', '32') THEN '30' -- Agrupa Veracruz Norte y Sur como 30
+        WHEN p.NUMDEL IN ('35', '36', '37', '38') THEN '09' -- Agrupa Ciudad de México (DF Norte y Sur) como 09
+        WHEN p.NUMDEL IN ('15', '16') THEN '15' -- Agrupa México Oriente y Poniente como 15
+        ELSE p.NUMDEL -- Deja los demás estados igual
+    END AS NUMELINEGI,
+    p.DELEGACION,
+    COUNT(DISTINCT p.DEPENDENCIA) AS TOTAL_UNIDADES,
+    SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) AS OCUPADAS,
+    SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) AS VACANTES
+FROM
+    personalaps.plantillaordinario p
+WHERE DESCRIP_CLASCATEG = '1.MÉDICOS'
+AND p.QNA = '2024017'
+GROUP BY
+    NUMELINEGI, p.NUMDEL, p.DELEGACION
+ORDER BY
+    NUMELINEGI, p.NUMDEL;
+
+SELECT * FROM procesado.plazas_vacantes_por_estado_TOTAL;
+
+
+-- Numero 2
+
+UPDATE procesado.plazas_vacantes_por_estado_TOTAL
+SET NUMELINEGI = 
+    CASE 
+        WHEN DELEGACION = 'Michoacán' THEN '16'
+        WHEN DELEGACION = 'Morelos' THEN '17'
+        WHEN DELEGACION = 'Nayarit' THEN '18'
+        WHEN DELEGACION = 'Nuevo León' THEN '19'
+        WHEN DELEGACION = 'Oaxaca' THEN '20'
+        WHEN DELEGACION = 'Puebla' THEN '21'
+        WHEN DELEGACION = 'Querétaro' THEN '22'
+        WHEN DELEGACION = 'Quintana Roo' THEN '23'
+        WHEN DELEGACION = 'San Luis Potosí' THEN '24'
+        WHEN DELEGACION = 'Sinaloa' THEN '25'
+        WHEN DELEGACION = 'Sonora' THEN '26'
+        WHEN DELEGACION = 'Tabasco' THEN '27'
+        WHEN DELEGACION = 'Tamaulipas' THEN '28'
+        WHEN DELEGACION = 'Tlaxcala' THEN '29'
+        WHEN DELEGACION = 'Veracruz Norte' THEN '30'
+        WHEN DELEGACION = 'Veracruz Sur' THEN '30'
+        WHEN DELEGACION = 'Yucatán' THEN '31'
+        WHEN DELEGACION = 'Zacatecas' THEN '32'
+        ELSE NUMELINEGI
+    END
+WHERE DELEGACION IN ('Michoacán', 'Morelos', 'Nayarit', 'Nuevo León', 'Oaxaca', 
+                     'Puebla', 'Querétaro', 'Quintana Roo', 'San Luis Potosí', 
+                     'Sinaloa', 'Sonora', 'Tabasco', 'Tamaulipas', 'Tlaxcala', 
+                     'Veracruz Norte', 'Veracruz Sur', 'Yucatán', 'Zacatecas');
+
+
+-- Numero 3
+
+CREATE TABLE procesado.vacantes_estado_densidad_poblacional_TOTAL AS
+SELECT
+    CASE
+        -- Agrupar Veracruz Norte y Sur bajo NUMELINEGI 30
+        WHEN pvpe.NUMELINEGI = '30' THEN '30'
+        -- Agrupar Ciudad de México (DF Norte y Sur) bajo NUMELINEGI 09
+        WHEN pvpe.NUMELINEGI = '09' THEN '09'
+        -- Agrupar México Oriente y Poniente bajo NUMELINEGI 15
+        WHEN pvpe.NUMELINEGI = '15' THEN '15'
+        ELSE pvpe.NUMELINEGI
+    END AS NUMELINEGI,
+    CASE
+        -- Renombrar Veracruz agrupado
+        WHEN pvpe.NUMELINEGI = '30' THEN 'Veracruz'
+        -- Renombrar Ciudad de México agrupado
+        WHEN pvpe.NUMELINEGI = '09' THEN 'Ciudad de México'
+        -- Renombrar México agrupado
+        WHEN pvpe.NUMELINEGI = '15' THEN 'Estado de México'
+        ELSE pvpe.DELEGACION
+    END AS DELEGACION,
+    SUM(pvpe.TOTAL_UNIDADES) AS TOTAL_UNIDADES,
+    SUM(pvpe.OCUPADAS) AS OCUPADAS,
+    SUM(pvpe.VACANTES) AS VACANTES,
+    SUM(catalogo.imss) AS DERECHOHABIENTES
+FROM
+    procesado.plazas_vacantes_por_estado_TOTAL pvpe
+LEFT JOIN
+    personalaps.catalogo_derechohabiencia_estado catalogo
+    ON pvpe.NUMELINEGI = catalogo.numero_delegacion
+GROUP BY
+    NUMELINEGI, DELEGACION
+ORDER BY
+    NUMELINEGI;
+
+SELECT *  FROM procesado.vacantes_estado_densidad_poblacional_TOTAL;
+
+
+-- Numero 4
+
+CREATE TABLE procesado.vacantes_estado_densidad_poblacional_agrupado_TOTAL AS
+SELECT 
+    NUMELINEGI,
+    DELEGACION,
+    SUM(TOTAL_UNIDADES) AS TOTAL_UNIDADES,
+    SUM(VACANTES) AS PLAZAS_VACANTES,
+    SUM(OCUPADAS) AS PLAZAS_OCUPADAS,
+    MAX(DERECHOHABIENTES) AS DERECHOHABIENTES -- Obtiene cualquier valor (ya que son iguales)
+FROM 
+    procesado.vacantes_estado_densidad_poblacional_TOTAL
+GROUP BY 
+    NUMELINEGI, DELEGACION
+ORDER BY 
+    NUMELINEGI;
+
+SELECT DELEGACION, DERECHOHABIENTES, PLAZAS_OCUPADAS, PLAZAS_VACANTES FROM procesado.vacantes_estado_densidad_poblacional_agrupado_TOTAL;
+
+*/
+
+// 📌 Array de datos SIN base de datos
+const datos = [
+	{
+		"DELEGACION" : "Chiapas",
+		"DERECHOHABIENTES" : 672681,
+		"PLAZAS_OCUPADAS" : 1327,
+		"PLAZAS_VACANTES" : 130
+	}
+];
+
+/*
+Query para extraer esta informacion de la tabla plazas ocupadas y vacantes por categoria 
+
+SELECT 
+    p.CATEGORIA,
+    COUNT(CASE WHEN p.PLZOCU = 1 THEN p.MATRICULA END) AS PLAZAS_OCUPADAS,
+    COUNT(CASE WHEN p.PLZVAC = 1 THEN p.MATRICULA END) AS PLAZAS_VACANTES,
+    (COUNT(CASE WHEN p.PLZOCU = 1 THEN p.MATRICULA END) - 
+    COUNT(CASE WHEN p.PLZVAC = 1 THEN p.MATRICULA END)) AS DIFERENCIA,
+    ROUND(
+    COUNT(CASE WHEN p.PLZOCU = 1 THEN p.MATRICULA END) * 100.0 /
+    NULLIF(COUNT(p.MATRICULA), 0), 2
+) AS PORCENTAJE_OCUPACION
+FROM 
+    personalaps.plantillaordinario p
+WHERE p.DESCRIP_CLASCATEG = "1.MÉDICOS"
+AND p.QNA = '2024017'
+AND p.NUMDEL = '07'
+AND p.DELEGACION = 'Chiapas'
+GROUP BY 
+    p.CATEGORIA
+ORDER BY 
+    PLAZAS_VACANTES DESC;
+*/
+
+const datos8 = [
+	{
+		"CATEGORIA" : "MEDICO NO FAMILIAR     80",
+		"PLAZAS_OCUPADAS" : 688,
+		"PLAZAS_VACANTES" : 68,
+		"DIFERENCIA" : 620,
+		"PORCENTAJE_OCUPACION" : 91.01
+	},
+	{
+		"CATEGORIA" : "N51 JEFE SERVICIO UMH  80",
+		"PLAZAS_OCUPADAS" : 13,
+		"PLAZAS_VACANTES" : 15,
+		"DIFERENCIA" : -2,
+		"PORCENTAJE_OCUPACION" : 46.43
+	},
+	{
+		"CATEGORIA" : "MEDICO FAMILIAR        80",
+		"PLAZAS_OCUPADAS" : 402,
+		"PLAZAS_VACANTES" : 9,
+		"DIFERENCIA" : 393,
+		"PORCENTAJE_OCUPACION" : 97.81
+	},
+	{
+		"CATEGORIA" : "MEDICO GENERAL 80",
+		"PLAZAS_OCUPADAS" : 88,
+		"PLAZAS_VACANTES" : 9,
+		"DIFERENCIA" : 79,
+		"PORCENTAJE_OCUPACION" : 90.72
+	},
+	{
+		"CATEGORIA" : "N52 COORD CLINICO UMH  80",
+		"PLAZAS_OCUPADAS" : 9,
+		"PLAZAS_VACANTES" : 8,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 52.94
+	},
+	{
+		"CATEGORIA" : "N53 COORD CL TURNO UMH 80",
+		"PLAZAS_OCUPADAS" : 6,
+		"PLAZAS_VACANTES" : 4,
+		"DIFERENCIA" : 2,
+		"PORCENTAJE_OCUPACION" : 60.00
+	},
+	{
+		"CATEGORIA" : "MED TRAS PAC URGENCIA  80",
+		"PLAZAS_OCUPADAS" : 12,
+		"PLAZAS_VACANTES" : 4,
+		"DIFERENCIA" : 8,
+		"PORCENTAJE_OCUPACION" : 75.00
+	},
+	{
+		"CATEGORIA" : "N51 JEFE SERVICIO CONSULT EXT UMH 80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 2,
+		"DIFERENCIA" : -2,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N54 SUBDIR MED UMH B   80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : 0,
+		"PORCENTAJE_OCUPACION" : 50.00
+	},
+	{
+		"CATEGORIA" : "N53 DIRECTOR UMH D     80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : -1,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N49 DIR UMF 4 5 Y 6   80",
+		"PLAZAS_OCUPADAS" : 7,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : 6,
+		"PORCENTAJE_OCUPACION" : 87.50
+	},
+	{
+		"CATEGORIA" : "N51 JEF SPPSTIMSS UMH 2NIV 80",
+		"PLAZAS_OCUPADAS" : 2,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 66.67
+	},
+	{
+		"CATEGORIA" : "N54 MED SUP HOSPITALES 80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : -1,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N54 DIRECTOR UMF 1     80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : -1,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N54 MED SUP EPIDEMIOLOGO 80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : -1,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N51 COORD HOSP DON ORG Y TEJ UMH",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : 0,
+		"PORCENTAJE_OCUPACION" : 50.00
+	},
+	{
+		"CATEGORIA" : "N55 DIRECTOR UMH B     80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : 0,
+		"PORCENTAJE_OCUPACION" : 50.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX MED SPPSTIMSS D1YD2 80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : -1,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N53 COOR AUX PROG M D2 80",
+		"PLAZAS_OCUPADAS" : 0,
+		"PLAZAS_VACANTES" : 1,
+		"DIFERENCIA" : -1,
+		"PORCENTAJE_OCUPACION" : 0.00
+	},
+	{
+		"CATEGORIA" : "N52 SUBDIR MEDICO UMF  80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX ATN MED D1YD2 80",
+		"PLAZAS_OCUPADAS" : 2,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 2,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N57 COORDINADOR(A) PLAN ENL INST D1 Y D2",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N48 DIRECTOR MICROZONA 80",
+		"PLAZAS_OCUPADAS" : 8,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 8,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N57 COORDINADOR(A) GEST MEDICA D1 Y D2",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N60 JEFE(A) SERVS PREST MEDICAS D1 Y D2",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N58 COORDINADOR(A) PREV ATN SAL D1 Y D2",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX MED INVEST D1YD2 80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX MED SALUD TRAB D1YD2 80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX MED SAL PUBLICA D1YD2 80",
+		"PLAZAS_OCUPADAS" : 2,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 2,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N52 DIRECTOR UM D      80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N56 MED SUP LIDER 80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX MED EDUCA D1YD2 80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 SUBD MED UMH A     80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N57 COORDINADOR(A) SALUD TRAB D1 Y D2",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N57 COORDINADOR(A) INF AN EST D1 Y D2",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N53 DIRECTOR  UMF 2    80",
+		"PLAZAS_OCUPADAS" : 4,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 4,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N54 MED SUP MED FAM 80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N52 DIRECTOR UMF 3     80",
+		"PLAZAS_OCUPADAS" : 4,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 4,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "MEDICO GENERAL U MED  80",
+		"PLAZAS_OCUPADAS" : 43,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 43,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N56 DIRECTOR UMH A     80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N51 JEFE SERVICIOS UMF 80",
+		"PLAZAS_OCUPADAS" : 18,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 18,
+		"PORCENTAJE_OCUPACION" : 100.00
+	},
+	{
+		"CATEGORIA" : "N55 COORD AUX GEST MED D1YD2 80",
+		"PLAZAS_OCUPADAS" : 1,
+		"PLAZAS_VACANTES" : 0,
+		"DIFERENCIA" : 1,
+		"PORCENTAJE_OCUPACION" : 100.00
+	}
+];

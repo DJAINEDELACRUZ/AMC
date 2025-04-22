@@ -1,0 +1,185 @@
+/* query para crear la tabla plazas ocupadas y vacantes por OOAD ejecutar el siguiente query
+SELECT
+	p.NUMDEL,
+	p.DELEGACION,
+	COUNT(DISTINCT p.DEPENDENCIA) AS TOTAL_UNIDADES,
+	SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) AS OCUPADAS,
+	SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) AS VACANTES,
+	ROUND(SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_OCUPADAS,
+	ROUND(SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_VACANTES
+FROM 
+	personalaps.plantillaordinario p
+WHERE 
+	DESCRIP_CLASCATEG = '1.MÉDICOS'
+AND QNA = '2024017'
+GROUP BY
+	p.NUMDEL, p.DELEGACION
+ORDER BY
+	p.NUMDEL; */
+
+const datosDelegaciones = [
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"TOTAL_UNIDADES" : 44,
+		"OCUPADAS" : 1327,
+		"VACANTES" : 130,
+		"PORCENTAJE_OCUPADAS" : 91.08,
+		"PORCENTAJE_VACANTES" : 8.92
+	}
+];
+
+/* query para extraer esta información del modal desagregado
+SELECT 
+    p.NUMDEL, 
+    p.DELEGACION, 
+    p.CATEGORIA AS CATEGORIA, 
+    p.DESCRIP_CLASCATEG AS DESCRIPCION,
+    COUNT(CASE WHEN p.PLZVAC = 1 THEN p.MATRICULA END) AS VACANTES
+FROM 
+    personalaps.plantillaordinario p
+WHERE p.DESCRIP_CLASCATEG = "1.MÉDICOS"
+GROUP BY 
+    p.NUMDEL, p.DELEGACION, p.CATEGORIA
+HAVING 
+    COUNT(CASE WHEN p.PLZVAC = 1 THEN p.MATRICULA END) > 0
+ORDER BY 
+    p.NUMDEL, p.CATEGORIA;
+*/
+const datosDelegacionesDesagregado = [
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "MED TRAS PAC URGENCIA  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "MEDICO FAMILIAR        80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 9
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "MEDICO GENERAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 9
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "MEDICO NO FAMILIAR     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 68
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N49 DIR UMF 4 5 Y 6   80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N51 COORD HOSP DON ORG Y TEJ UMH",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N51 JEF SPPSTIMSS UMH 2NIV 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N51 JEFE SERVICIO CONSULT EXT UMH 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N51 JEFE SERVICIO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 15
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N52 COORD CLINICO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 8
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N53 COOR AUX PROG M D2 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N53 COORD CL TURNO UMH 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 4
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N53 DIRECTOR UMH D     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N54 DIRECTOR UMF 1     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N54 MED SUP EPIDEMIOLOGO 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N54 MED SUP HOSPITALES 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N54 SUBDIR MED UMH B   80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N55 COORD AUX MED SPPSTIMSS D1YD2 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "07",
+		"DELEGACION" : "Chiapas",
+		"CATEGORIA" : "N55 DIRECTOR UMH B     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	}
+];

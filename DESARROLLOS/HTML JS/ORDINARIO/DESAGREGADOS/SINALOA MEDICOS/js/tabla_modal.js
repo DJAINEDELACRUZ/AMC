@@ -1,0 +1,132 @@
+/* query para crear la tabla plazas ocupadas y vacantes por OOAD ejecutar el siguiente query
+SELECT
+	p.NUMDEL,
+	p.DELEGACION,
+	COUNT(DISTINCT p.DEPENDENCIA) AS TOTAL_UNIDADES,
+	SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) AS OCUPADAS,
+	SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) AS VACANTES,
+	ROUND(SUM(CASE WHEN p.PLZOCU = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_OCUPADAS,
+	ROUND(SUM(CASE WHEN p.PLZVAC = 1 THEN 1 ELSE 0 END) * 100.0 / 
+		NULLIF(SUM(CASE WHEN p.PLZOCU = 1 OR p.PLZVAC = 1 THEN 1 ELSE 0 END), 0), 2) AS PORCENTAJE_VACANTES
+FROM 
+	personalaps.plantillaordinario p
+WHERE 
+	DESCRIP_CLASCATEG = '1.MÉDICOS'
+AND QNA = '2024017'
+GROUP BY
+	p.NUMDEL, p.DELEGACION
+ORDER BY
+	p.NUMDEL; */
+
+const datosDelegaciones = [
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"TOTAL_UNIDADES" : 53,
+		"OCUPADAS" : 2298,
+		"VACANTES" : 115,
+		"PORCENTAJE_OCUPADAS" : 95.23,
+		"PORCENTAJE_VACANTES" : 4.77
+	}
+];
+
+/* query para extraer esta información del modal desagregado
+SELECT 
+    p.NUMDEL, 
+    p.DELEGACION, 
+    p.CATEGORIA AS CATEGORIA, 
+    p.DESCRIP_CLASCATEG AS DESCRIPCION,
+    COUNT(*) AS VACANTES
+FROM 
+    personalaps.plantillaordinario p
+WHERE 
+    p.DESCRIP_CLASCATEG = '1.MÉDICOS'
+    AND p.QNA = '2024017'
+    AND p.NUMDEL = '26'
+	AND p.DELEGACION = 'Sinaloa'
+    AND p.PLZVAC = 1
+GROUP BY 
+    p.NUMDEL, p.DELEGACION, p.CATEGORIA, p.DESCRIP_CLASCATEG
+ORDER BY 
+    p.NUMDEL, p.CATEGORIA;
+*/
+const datosDelegacionesDesagregado = [
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "MED TRAS PAC URGENCIA  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "MEDICO FAMILIAR        80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 23
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "MEDICO GENERAL 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 16
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "MEDICO NO FAMILIAR     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 49
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N51 DIRECTOR UMH E     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N51 JEF SPPSTIMSS UMH 2NIV 80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N51 JEFE SERVICIO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 18
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N52 COORD CLINICO UMH  80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N52 DIRECTOR UMF 3     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N53 DIRECTOR  UMF 2    80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 1
+	},
+	{
+		"NUMDEL" : "26",
+		"DELEGACION" : "Sinaloa",
+		"CATEGORIA" : "N55 SUBD MED UMH A     80",
+		"DESCRIPCION" : "1.MÉDICOS",
+		"VACANTES" : 2
+	}
+];
